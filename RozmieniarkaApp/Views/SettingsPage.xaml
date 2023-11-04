@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:RozmieniarkaApp.ViewModels"
+             x:Class="RozmieniarkaApp.Views.SettingsPage"
+             Title="Ustawienia aplikacji"
+             >
+    <ContentPage.BindingContext>
+        <local:SettingsPageViewModel/>
+    </ContentPage.BindingContext>
+    <!--//TODO przostosuj od rozne theme-->
+    <VerticalStackLayout
+        Padding="10,20,10,0"
+        Spacing="10">
+        
+        <!-- Pole ustawienia adresu IP-->
+        <Grid>
+            <Label
+                Text="Adres IP urządzenia"
+                VerticalOptions="Center"/>
+            <Grid
+                BackgroundColor="{StaticResource LittlePrimary}"
+                HorizontalOptions="EndAndExpand">
+                <Entry
+                    Text="{Binding MachineIPaddress}"
+                       MinimumWidthRequest="120"
+                       HorizontalTextAlignment="End"
+                       Placeholder="10.0.0.7"
+                       PlaceholderColor="{StaticResource Gray400}"
+                       MaxLength="15"
+                       ClearButtonVisibility="WhileEditing"
+                   />
+            </Grid>
+        </Grid>
+        
+        <!-- Pole ustawienia portu -->
+        <Grid
+            IsVisible="false">
+            <Label
+                Text="Port urządzenia"
+                VerticalOptions="Center"/>
+            <Grid
+                BackgroundColor="{StaticResource LittlePrimary}"
+                HorizontalOptions="EndAndExpand">
+                <Entry Text="{Binding MachinePort}" 
+                       MinimumWidthRequest="120"
+                       Keyboard="Numeric"
+                       HorizontalTextAlignment="End"
+                       Placeholder="5555"
+                       PlaceholderColor="{StaticResource Gray400}"
+                       MaxLength="5"
+                       ClearButtonVisibility="WhileEditing"
+                       ReturnType="Next"
+                   />
+            </Grid>
+        </Grid>
+        
+        <!-- Przyciski-->
+        <Grid>
+            <Button
+                Command="{Binding SaveButtonClickedCommand}"
+                Text="Zapisz"
+                BackgroundColor="{StaticResource LittlePrimary}"
+                TextColor="{StaticResource Gray900}"
+                HorizontalOptions="End"
+                CornerRadius="5"
+                Margin="0,20,40,0"
+                Padding="10,5,10,5"/>
+            <Button
+                Command="{Binding CancelButtonClickedCommand}"
+                Text="Anuluj"
+                BackgroundColor="{StaticResource LittlePrimary}"
+                TextColor="{StaticResource Gray900}"
+                HorizontalOptions="Start"
+                CornerRadius="5"
+                Margin="40,20,10,0"
+                Padding="10,5,10,5"/>
+        </Grid>
+        
+        <!-- Linijka przerwy-->
+        <Grid
+            BackgroundColor="{StaticResource LittlePrimary}"
+            Padding="1"
+            Margin="0,20,0,0"/>
+        
+        <!-- Disclaimer-->
+        <VerticalStackLayout
+            Margin="0,30,0,0">
+            <Label
+            Text="Wersja 1.0.0"
+            VerticalOptions="EndAndExpand"
+            FontSize="Micro"
+            TextColor="{StaticResource Gray900}"/>
+            <Label
+            Text="W celu zmiany adresu IP wewnątrz urządzenia &#10;należy użyć aplikacji desktopowej"
+            VerticalOptions="EndAndExpand"
+            FontSize="Micro"
+            TextColor="{StaticResource Gray900}"/>
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

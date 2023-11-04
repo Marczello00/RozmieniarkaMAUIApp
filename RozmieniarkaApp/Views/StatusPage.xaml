@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:RozmieniarkaApp.ViewModels"
+             xmlns:local2="clr-namespace:RozmieniarkaApp.Converters"
+             x:Class="RozmieniarkaApp.Views.StatusPage"
+             Shell.NavBarIsVisible="false">
+    <ContentPage.BindingContext>
+        <local:StatusPageViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <local2:AvailableBanknotesConverter x:Key="AvailableBanknotesConverter"/>
+    </ContentPage.Resources>
+    <RefreshView
+        IsRefreshing="{Binding IsPageRefreshing}"
+        Command="{Binding RefreshMachineStatusCommand}">
+        <VerticalStackLayout>
+            <!-- Górna belka-->
+            <Grid
+                MinimumHeightRequest="60"
+                BackgroundColor="{StaticResource Tertiary}">
+                <Label
+                    VerticalOptions="Center"
+                    Padding="10,0,0,0"
+                    FontSize="Body"
+                    TextColor="white"
+                    Text="Status rozmieniarki"/>
+                <Grid
+                    Padding="0,0,10,0"
+                    HorizontalOptions="EndAndExpand"
+                    VerticalOptions="Center">
+                    <HorizontalStackLayout
+                        Spacing="20"
+                        Padding="10">
+                        <ImageButton
+                            Command="{Binding RefreshMachineStatusCommand}"
+                            Source="refresh.png"
+                            MaximumHeightRequest="30"
+                            MaximumWidthRequest="30"
+                            />
+                        <ImageButton
+                            Source="setting.png"
+                            Command="{Binding GotoSettingsPageCommand}"
+                            MaximumHeightRequest="30"
+                            MaximumWidthRequest="30"
+                            />
+                    </HorizontalStackLayout>
+                </Grid>
+            </Grid>
+            <!-- Statusy rozmieniarki-->
+            <ScrollView>
+                <VerticalStackLayout
+            Padding="10"
+            Spacing="10">
+                    <!-- Stan urządzenia-->
+                    <Grid
+                Padding="5"
+                BackgroundColor="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray900}}">
+                        <Label
+                   FontAttributes="Bold"
+                    Padding="10"
+                    Text="Stan urządzenia"
+                    HorizontalOptions="Start"/>
+
+                        <Grid
+                    Margin="0,0,20,0"
+                    HorizontalOptions="End">
+                            <Rectangle
+                        MaximumWidthRequest="30" 
+                        MaximumHeightRequest="30" 
+                        Fill="{Binding IsMachineOkColor}"
+                        Stroke="black"
+                        StrokeThickness="4"/>
+                        </Grid>
+                    </Grid>
+                    <!-- Stan hopperów-->
+                    <VerticalStackLayout
+                BackgroundColor="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray900}}"
+                Padding="10"
+                Spacing="7">
+                        <!-- Hopper 5zł-->
+                        <Grid
+                    Padding="5"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}">
+                            <Label
+                        FontAttributes="Bold"
+                        Padding="10"
+                        Text="Zasobnik 5 zł"
+                        HorizontalOptions="Start"/>
+                            <Grid
+                        Margin="0,0,20,0"
+                        HorizontalOptions="End">
+                                <Rectangle
+                            MaximumWidthRequest="30" 
+                            MaximumHeightRequest="30" 
+                            Fill="{Binding IsHopper5OkColor}"
+                            Stroke="black"
+                            StrokeThickness="4"/>
+                            </Grid>
+                        </Grid>
+                        <!-- Hopper 2zł-->
+                        <Grid
+                    Padding="5"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}">
+                            <Label
+                        FontAttributes="Bold"
+                        Padding="10"
+                        Text="Zasobnik 2 zł"
+                        HorizontalOptions="Start"/>
+
+                            <Grid
+                        Margin="0,0,20,0"
+                        HorizontalOptions="End">
+                                <Rectangle
+                            MaximumWidthRequest="30" 
+                            MaximumHeightRequest="30" 
+                            Fill="{Binding IsHopper2OkColor}"
+                            Stroke="black"
+                            StrokeThickness="4"/>
+                            </Grid>
+                        </Grid>
+                        <!-- Hopper 1zł-->
+                        <Grid
+                    Padding="5"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}">
+                            <Label
+                        FontAttributes="Bold"
+                        Padding="10"
+                        Text="Zasobnik 1 zł"
+                        HorizontalOptions="Start"/>
+                            <Grid
+                        Margin="0,0,20,0"
+                        HorizontalOptions="End">
+                                <Rectangle
+                            MaximumWidthRequest="30" 
+                            MaximumHeightRequest="30" 
+                            Fill="{Binding IsHopper1OkColor}"
+                            Stroke="black"
+                            StrokeThickness="4"/>
+                            </Grid>
+                        </Grid>
+                    </VerticalStackLayout>
+                    <!-- Stan kasety-->
+                    <Grid
+                        IsVisible="false"
+                Padding="5"
+                BackgroundColor="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray900}}">
+                        <Label
+                    FontAttributes="Bold"
+                    Padding="10"
+                    Text="Stan kasety"
+                    HorizontalOptions="Start"/>
+                        <Grid
+                    Margin="0,0,20,0"
+                    HorizontalOptions="End">
+                            <Rectangle
+                        MaximumWidthRequest="30" 
+                        MaximumHeightRequest="30" 
+                        Fill="{Binding IsCasetteOkColor}"
+                        Stroke="black"
+                        StrokeThickness="4"/>
+                        </Grid>
+                    </Grid>
+                    <!-- Stan drzwi-->
+                    <Grid
+                Padding="5"
+                BackgroundColor="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray900}}">
+                        <Label
+                    FontAttributes="Bold"
+                    Padding="10"
+                    Text="Stan drzwi"
+                    HorizontalOptions="Start"/>
+                        <Grid
+                    Margin="0,0,20,0"
+                    HorizontalOptions="End">
+                            <Rectangle
+                        MaximumWidthRequest="30" 
+                        MaximumHeightRequest="30" 
+                        Fill="{Binding IsDoorOkColor}"
+                        Stroke="black"
+                        StrokeThickness="4"/>
+                        </Grid>
+                    </Grid>
+                    <!-- Stan czytnika-->
+                    <Grid
+                Padding="5"
+                BackgroundColor="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray900}}">
+                        <Label
+                    FontAttributes="Bold"
+                    Padding="10"
+                    Text="Stan czytnika"
+                    HorizontalOptions="Start"/>
+                        <Grid
+                    Margin="0,0,20,0"
+                    HorizontalOptions="End">
+                            <Rectangle
+                        MaximumWidthRequest="30" 
+                        MaximumHeightRequest="30" 
+                        Fill="{Binding IsReaderOkColor}"
+                        Stroke="black"
+                        StrokeThickness="4"/>
+                        </Grid>
+                    </Grid>
+                    <!-- Liczba banknotów w kasecie-->
+                    <Grid
+                Padding="5"
+                BackgroundColor="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray900}}">
+                        <HorizontalStackLayout
+                            HorizontalOptions="Start"
+                            Padding="10,1,0,1"
+                            Spacing="10">
+                            <Label
+                                VerticalOptions="Center"
+                                Text="Kaseta"
+                                FontAttributes="Bold"/>
+                            <Image
+                            Source="banknote20zl.png"
+                            MaximumHeightRequest="40"
+                            HorizontalOptions="Start"/>
+                        </HorizontalStackLayout>
+                        <Grid
+                    Margin="0,0,27,0"
+                    HorizontalOptions="End">
+                            <Label
+                                VerticalOptions="Center"
+                                Text="{Binding NumberOfBanknotesAvailable,
+                                Converter={StaticResource AvailableBanknotesConverter}}"
+                                />
+                        </Grid>
+                    </Grid>
+                </VerticalStackLayout>
+            </ScrollView>
+        </VerticalStackLayout>
+    </RefreshView>
+
+</ContentPage>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="RozmieniarkaApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:RozmieniarkaApp.Views"
+    Shell.FlyoutBehavior="Disabled"
+    Shell.NavBarIsVisible="true">
+    <TabBar
+        Route="settingsPage">
+        <Tab Title="Status"
+             Icon="Icons/status.png">
+            <ShellContent ContentTemplate="{DataTemplate views:StatusPage}" />
+        </Tab>
+        <Tab Title="Wpłacono"
+             Icon="Icons/banknote.png">
+            <ShellContent ContentTemplate="{DataTemplate views:InsertedPage}" />
+        </Tab>
+        <Tab Title="Wypłacono"
+             Icon="Icons/coins.png">
+            <ShellContent ContentTemplate="{DataTemplate views:WithdrawnPage}" />
+        </Tab>
+    </TabBar>
+</Shell>
