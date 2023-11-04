@@ -39,13 +39,22 @@ namespace RozmieniarkaApp.Services
             port = Preferences.Get("MachinePort", 5555);
             string message = CreateMessage(dataQueryType);
             string status = "";
-            try
+            using (var client = new TcpClient())
             {
-                using (var client = new TcpClient(ipAddress, port))
+                try
                 {
-                    byte[] dataToSend = Encoding.ASCII.GetBytes(message);
+                    client.ConnectAsync(ipAddress, port).Wait(5000);
+                }
+                catch (Exception ex)
+                {
+                    //Console.WriteLine(ex.Message);
+                    status = "Error: " + ex.Message;
+                }
+                if (client.Connected)
+                {
                     using (var stream = client.GetStream())
                     {
+                        byte[] dataToSend = Encoding.ASCII.GetBytes(message);
                         await stream.WriteAsync(dataToSend, 0, dataToSend.Length);
                         byte[] dataToReceive = new byte[client.ReceiveBufferSize];
                         await Task.Delay(1000);
@@ -53,11 +62,6 @@ namespace RozmieniarkaApp.Services
                         status = Encoding.ASCII.GetString(dataToReceive, 0, bytesRead);
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                //Console.WriteLine(ex.Message);
-                status = "Error: " + ex.Message;
             }
             return status;
         }
