@@ -35,7 +35,7 @@
         
         <!-- Pole ustawienia portu -->
         <Grid
-            IsVisible="false">
+            IsVisible="true">
             <Label
                 Text="Port urządzenia"
                 VerticalOptions="Center"/>

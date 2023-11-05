@@ -36,6 +36,7 @@
             <!--Lista banknotów-->
             <ScrollView>
                 <Grid
+                    HorizontalOptions="Center"
                     Padding="10,20,10,0"
                     ColumnSpacing="10"
                     RowSpacing="10">
