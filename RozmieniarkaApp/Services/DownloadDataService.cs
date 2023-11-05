@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using RozmieniarkaApp.Enums;
 using System.Net.Sockets;
 using System.Text;
-using System.Threading.Tasks;
-using RozmieniarkaApp.Enums;
 
 namespace RozmieniarkaApp.Services
 {
@@ -39,15 +34,16 @@ namespace RozmieniarkaApp.Services
             port = Preferences.Get("MachinePort", 5555);
             string message = CreateMessage(dataQueryType);
             string status = "";
+            TimeSpan timeout = TimeSpan.FromSeconds(5);
+            CancellationToken cts = new CancellationToken();
             using (var client = new TcpClient())
             {
                 try
                 {
-                    client.ConnectAsync(ipAddress, port).Wait(5000);
+                    await client.ConnectAsync(ipAddress, port).WaitAsync(timeout, cts);
                 }
                 catch (Exception ex)
                 {
-                    //Console.WriteLine(ex.Message);
                     status = "Error: " + ex.Message;
                 }
                 if (client.Connected)
@@ -63,6 +59,8 @@ namespace RozmieniarkaApp.Services
                     }
                 }
             }
+            if(status == "")
+                status = "Error: Unknown error";
             return status;
         }
     }
