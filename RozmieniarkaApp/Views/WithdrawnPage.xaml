@@ -65,10 +65,11 @@
                         VerticalOptions="Center"
                         HorizontalOptions="Center"
                         Spacing="15">
-                        <Image
+                            <Image
+                            Style="{StaticResource banknoteImage}"
                             MaximumHeightRequest="70"
                             Source="banknote20zl.png"/>
-                        <Label
+                            <Label
                             HorizontalOptions="Center"
                             FontSize="Medium"
                             Text="{Binding Numberof20zlBanknotes,StringFormat='{0} szt'}"/>
@@ -94,6 +95,7 @@
                         HorizontalOptions="Center"
                         Spacing="15">
                             <Image
+                            Style="{StaticResource banknoteImage}"
                             MaximumHeightRequest="70"
                             Source="coin5zl.png"/>
                             <Label
@@ -118,6 +120,7 @@
                         HorizontalOptions="Center"
                         Spacing="15">
                             <Image
+                                Style="{StaticResource banknoteImage}"
                             MaximumHeightRequest="70"
                             Source="coin2zl.png"/>
                             <Label
@@ -142,6 +145,7 @@
                         HorizontalOptions="Center"
                         Spacing="15">
                             <Image
+                                Style="{StaticResource banknoteImage}"
                             MaximumHeightRequest="70"
                             Source="coin1zl.png"/>
                             <Label

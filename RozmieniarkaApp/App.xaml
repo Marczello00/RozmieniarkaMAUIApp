@@ -5,6 +5,18 @@
              x:Class="RozmieniarkaApp.App">
     <Application.Resources>
         <ResourceDictionary>
+            <Shadow x:Key="Shadow"
+                    Brush="{StaticResource Gray900Brush}"
+                    Opacity="0.8"
+                    Offset="10,10"
+                    Radius="20"/>
+            <Style x:Key="banknoteImage" TargetType="Image">
+                <Setter Property="Shadow" Value="{StaticResource Shadow}" />
+            </Style>
+            <Style x:Key="StatusGrid" TargetType="Grid">
+                <Setter Property="Shadow" Value="{StaticResource Shadow}" />
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray900}}"/>
+            </Style>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />

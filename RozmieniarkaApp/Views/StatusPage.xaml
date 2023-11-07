@@ -54,14 +54,13 @@
             Spacing="10">
                     <!-- Stan urządzenia-->
                     <Grid
-                Padding="5"
-                BackgroundColor="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray900}}">
+                        Style="{StaticResource StatusGrid}"
+                Padding="5">
                         <Label
                    FontAttributes="Bold"
                     Padding="10"
                     Text="Stan urządzenia"
                     HorizontalOptions="Start"/>
-
                         <Grid
                     Margin="0,0,20,0"
                     HorizontalOptions="End">
@@ -74,77 +73,79 @@
                         </Grid>
                     </Grid>
                     <!-- Stan hopperów-->
-                    <VerticalStackLayout
-                BackgroundColor="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray900}}"
+                    <Grid
+                        Style="{StaticResource StatusGrid}">
+                        <VerticalStackLayout
                 Padding="10"
                 Spacing="7">
-                        <!-- Hopper 5zł-->
-                        <Grid
+                            <!-- Hopper 5zł-->
+                            <Grid
                     Padding="5"
                     BackgroundColor="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}">
-                            <Label
+                                <Label
                         FontAttributes="Bold"
                         Padding="10"
                         Text="Zasobnik 5 zł"
                         HorizontalOptions="Start"/>
-                            <Grid
+                                <Grid
                         Margin="0,0,20,0"
                         HorizontalOptions="End">
-                                <Rectangle
+                                    <Rectangle
                             MaximumWidthRequest="30" 
                             MaximumHeightRequest="30" 
                             Fill="{Binding IsHopper5OkColor}"
                             Stroke="black"
                             StrokeThickness="4"/>
+                                </Grid>
                             </Grid>
-                        </Grid>
-                        <!-- Hopper 2zł-->
-                        <Grid
+                            <!-- Hopper 2zł-->
+                            <Grid
                     Padding="5"
                     BackgroundColor="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}">
-                            <Label
+                                <Label
                         FontAttributes="Bold"
                         Padding="10"
                         Text="Zasobnik 2 zł"
                         HorizontalOptions="Start"/>
 
-                            <Grid
+                                <Grid
                         Margin="0,0,20,0"
                         HorizontalOptions="End">
-                                <Rectangle
+                                    <Rectangle
                             MaximumWidthRequest="30" 
                             MaximumHeightRequest="30" 
                             Fill="{Binding IsHopper2OkColor}"
                             Stroke="black"
                             StrokeThickness="4"/>
+                                </Grid>
                             </Grid>
-                        </Grid>
-                        <!-- Hopper 1zł-->
-                        <Grid
+                            <!-- Hopper 1zł-->
+                            <Grid
                     Padding="5"
                     BackgroundColor="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}">
-                            <Label
+                                <Label
                         FontAttributes="Bold"
                         Padding="10"
                         Text="Zasobnik 1 zł"
                         HorizontalOptions="Start"/>
-                            <Grid
+                                <Grid
                         Margin="0,0,20,0"
                         HorizontalOptions="End">
-                                <Rectangle
+                                    <Rectangle
                             MaximumWidthRequest="30" 
                             MaximumHeightRequest="30" 
                             Fill="{Binding IsHopper1OkColor}"
                             Stroke="black"
                             StrokeThickness="4"/>
+                                </Grid>
                             </Grid>
-                        </Grid>
-                    </VerticalStackLayout>
+                        </VerticalStackLayout>
+                    </Grid>
                     <!-- Stan kasety-->
                     <Grid
+                        Style="{StaticResource StatusGrid}"
                         IsVisible="false"
-                Padding="5"
-                BackgroundColor="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray900}}">
+                        Padding="5">
                         <Label
                     FontAttributes="Bold"
                     Padding="10"
@@ -163,8 +164,8 @@
                     </Grid>
                     <!-- Stan drzwi-->
                     <Grid
-                Padding="5"
-                BackgroundColor="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray900}}">
+                        Style="{StaticResource StatusGrid}"
+                Padding="5">
                         <Label
                     FontAttributes="Bold"
                     Padding="10"
@@ -183,8 +184,8 @@
                     </Grid>
                     <!-- Stan czytnika-->
                     <Grid
-                Padding="5"
-                BackgroundColor="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray900}}">
+                        Style="{StaticResource StatusGrid}"
+                Padding="5">
                         <Label
                     FontAttributes="Bold"
                     Padding="10"
@@ -203,8 +204,8 @@
                     </Grid>
                     <!-- Liczba banknotów w kasecie-->
                     <Grid
-                Padding="5"
-                BackgroundColor="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray900}}">
+                        Style="{StaticResource StatusGrid}"
+                Padding="5">
                         <HorizontalStackLayout
                             HorizontalOptions="Start"
                             Padding="10,1,0,1"
