@@ -1,10 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RozmieniarkaApp.ViewModels
 {
@@ -20,7 +15,7 @@ namespace RozmieniarkaApp.ViewModels
             LoadMachineData();
         }
         [RelayCommand]
-        public async Task CancelButtonClickedAsync()
+        public static async Task CancelButtonClickedAsync()
         {
             await Shell.Current.GoToAsync("..",true);
         }

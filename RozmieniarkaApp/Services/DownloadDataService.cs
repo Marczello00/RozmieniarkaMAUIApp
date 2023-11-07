@@ -1,6 +1,7 @@
 ﻿using RozmieniarkaApp.Enums;
 using System.Net.Sockets;
 using System.Text;
+using System;
 
 namespace RozmieniarkaApp.Services
 {
@@ -33,7 +34,7 @@ namespace RozmieniarkaApp.Services
             string message = CreateMessage(dataQueryType);
             string status = "";
             TimeSpan timeout = TimeSpan.FromSeconds(5);
-            CancellationToken cts = new CancellationToken();
+            CancellationToken cts = new();
             using (var client = new TcpClient())
             {
                 try
@@ -46,15 +47,13 @@ namespace RozmieniarkaApp.Services
                 }
                 if (client.Connected)
                 {
-                    using (var stream = client.GetStream())
-                    {
-                        byte[] dataToSend = Encoding.ASCII.GetBytes(message);
-                        await stream.WriteAsync(dataToSend, 0, dataToSend.Length);
-                        byte[] dataToReceive = new byte[client.ReceiveBufferSize];
-                        await Task.Delay(1000);
-                        int bytesRead = await stream.ReadAsync(dataToReceive, 0, client.ReceiveBufferSize);
-                        status = Encoding.ASCII.GetString(dataToReceive, 0, bytesRead);
-                    }
+                    using var stream = client.GetStream();
+                    byte[] dataToSend = Encoding.ASCII.GetBytes(message);
+                    await stream.WriteAsync(dataToSend);
+                    byte[] dataToReceive = new byte[client.ReceiveBufferSize];
+                    await Task.Delay(1000);
+                    int bytesRead = await stream.ReadAsync(dataToReceive.AsMemory(0, client.ReceiveBufferSize));
+                    status = Encoding.ASCII.GetString(dataToReceive, 0, bytesRead);
                 }
             }
             if(status == "")

@@ -5,11 +5,6 @@ using CommunityToolkit.Mvvm.Input;
 using RozmieniarkaApp.Enums;
 using RozmieniarkaApp.Models;
 using RozmieniarkaApp.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RozmieniarkaApp.ViewModels
 {
@@ -92,12 +87,12 @@ namespace RozmieniarkaApp.ViewModels
                 await Task.WhenAll(tasks);
             }
             else
-                SendMessageNoData();
+                WithdrawnPageViewModel.SendMessageNoData();
             CalculateWithdrawnTotalSum();
             IsPageRefreshing = false;
         }
 
-        private async void SendMessageNoData()
+        private static async void SendMessageNoData()
         {
             string text = "Brak wypłat";
             ToastDuration duration = ToastDuration.Short;
@@ -113,9 +108,9 @@ namespace RozmieniarkaApp.ViewModels
             SetAllOpacityLow();
             string status = await DownloadDataService.DownloadStatus(DataQueryType.Withdrawn);
             //status = "001006";
-            if (status.Substring(0, 2) == "Er")
+            if (status[..2] == "Er")
             {
-                await Shell.Current.DisplayAlert("Błąd", "Nie udało się połączyć z urządzeniem:\n" + status.Substring(7), "OK");
+                await Shell.Current.DisplayAlert("Błąd", "Nie udało się połączyć z urządzeniem:\n" + status[7..], "OK");
             }
             else
             {

@@ -6,12 +6,6 @@ using RozmieniarkaApp.Enums;
 using RozmieniarkaApp.Models;
 using RozmieniarkaApp.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace RozmieniarkaApp.ViewModels
 {
@@ -87,9 +81,9 @@ namespace RozmieniarkaApp.ViewModels
             SetAllOpacityLow();
             string status = await DownloadDataService.DownloadStatus(DataQueryType.Inserted);
             //status = "001006";
-            if (status.Substring(0, 2) == "Er")
+            if (status[..2] == "Er")
             {
-                await Shell.Current.DisplayAlert("Błąd", "Nie udało się połączyć z urządzeniem:\n" + status.Substring(7), "OK");
+                await Shell.Current.DisplayAlert("Błąd", string.Concat("Nie udało się połączyć z urządzeniem:\n", status.AsSpan(7)), "OK");
             }
             else
             {
@@ -112,11 +106,11 @@ namespace RozmieniarkaApp.ViewModels
                 await Task.WhenAll(tasks);
             }
             else
-                SendMessageNoData();
+                InsertedPageViewModel.SendMessageNoData();
             CalculateInsertedTotalSum();
         }
 
-        private async void SendMessageNoData()
+        private static async void SendMessageNoData()
         {
             string text = "Brak wpłat";
             ToastDuration duration = ToastDuration.Short;
