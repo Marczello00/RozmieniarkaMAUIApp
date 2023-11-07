@@ -19,7 +19,6 @@
                 Text="Adres IP urządzenia"
                 VerticalOptions="Center"/>
             <Grid
-                BackgroundColor="{StaticResource LittlePrimary}"
                 HorizontalOptions="EndAndExpand">
                 <Entry
                     Text="{Binding MachineIPaddress}"
@@ -40,7 +39,6 @@
                 Text="Port urządzenia"
                 VerticalOptions="Center"/>
             <Grid
-                BackgroundColor="{StaticResource LittlePrimary}"
                 HorizontalOptions="EndAndExpand">
                 <Entry Text="{Binding MachinePort}" 
                        MinimumWidthRequest="120"
@@ -60,8 +58,8 @@
             <Button
                 Command="{Binding SaveButtonClickedCommand}"
                 Text="Zapisz"
-                BackgroundColor="{StaticResource LittlePrimary}"
-                TextColor="{StaticResource Gray900}"
+                BackgroundColor="{AppThemeBinding Light={StaticResource Secondary}, Dark={StaticResource Primary}}"
+                TextColor="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource White}}"
                 HorizontalOptions="End"
                 CornerRadius="5"
                 Margin="0,20,40,0"
@@ -69,8 +67,8 @@
             <Button
                 Command="{Binding CancelButtonClickedCommand}"
                 Text="Anuluj"
-                BackgroundColor="{StaticResource LittlePrimary}"
-                TextColor="{StaticResource Gray900}"
+                BackgroundColor="{AppThemeBinding Light={StaticResource Secondary}, Dark={StaticResource Primary}}"
+                TextColor="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource White}}"
                 HorizontalOptions="Start"
                 CornerRadius="5"
                 Margin="40,20,10,0"
@@ -79,7 +77,7 @@
         
         <!-- Linijka przerwy-->
         <Grid
-            BackgroundColor="{StaticResource LittlePrimary}"
+            BackgroundColor="{AppThemeBinding Light={StaticResource Secondary}, Dark={StaticResource Primary}}"
             Padding="1"
             Margin="0,20,0,0"/>
         
@@ -90,12 +88,12 @@
             Text="Wersja 1.0.0"
             VerticalOptions="EndAndExpand"
             FontSize="Micro"
-            TextColor="{StaticResource Gray900}"/>
+            TextColor="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource White}}"/>
             <Label
             Text="W celu zmiany adresu IP wewnątrz urządzenia &#10;należy użyć aplikacji desktopowej"
             VerticalOptions="EndAndExpand"
             FontSize="Micro"
-            TextColor="{StaticResource Gray900}"/>
+            TextColor="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource White}}"/>
         </VerticalStackLayout>
     </VerticalStackLayout>
 </ContentPage>
