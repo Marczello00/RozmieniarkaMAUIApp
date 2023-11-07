@@ -7,8 +7,6 @@ namespace RozmieniarkaApp.Services
     public static class DownloadDataService
 
     {
-        private static string ipAddress = Preferences.Get("MachineIPaddress", "192.168.1.61");
-        private static int port = Preferences.Get("MachinePort", 5555);
         private static string CreateMessage(DataQueryType dataQueryType)
         {
             string message = "";
@@ -30,8 +28,8 @@ namespace RozmieniarkaApp.Services
         }
         public static async Task<string> DownloadStatus(DataQueryType dataQueryType)
         {
-            ipAddress = Preferences.Get("MachineIPaddress", "192.168.1.61");
-            port = Preferences.Get("MachinePort", 5555);
+            string ipAddress = Preferences.Get("MachineIPaddress", "192.168.1.61");
+            int port = Preferences.Get("MachinePort", 5555);
             string message = CreateMessage(dataQueryType);
             string status = "";
             TimeSpan timeout = TimeSpan.FromSeconds(5);
