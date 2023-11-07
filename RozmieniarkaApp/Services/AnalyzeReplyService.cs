@@ -5,13 +5,6 @@ namespace RozmieniarkaApp.Services
 {
     internal static class AnalyzeReplyService
     {
-        public static MachineStatusModel AnalyzeStatusReply(string reply)
-        {
-            //TODO to wydaje sie byc niepotrzebne
-            MachineStatusModel machineStatus = new();
-            machineStatus.FillMachineStatusFromStatusQuery(reply.Substring(6,10));
-            return machineStatus;
-        }
         private static CurrencyType IdentificateCurrency(string line)
         {
             return line switch

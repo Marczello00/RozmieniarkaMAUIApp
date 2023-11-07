@@ -1,12 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using RozmieniarkaApp.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RozmieniarkaApp.Models
+﻿namespace RozmieniarkaApp.Models
 {
     /// <summary>
     /// Class containing rozmieniarka's status information.

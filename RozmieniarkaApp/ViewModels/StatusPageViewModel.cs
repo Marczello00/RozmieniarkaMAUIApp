@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CommunityToolkit.Mvvm;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using RozmieniarkaApp.Enums;
 using RozmieniarkaApp.Models;
 using RozmieniarkaApp.Services;
 using RozmieniarkaApp.Views;
+using System;
 
 namespace RozmieniarkaApp.ViewModels
 {
@@ -66,19 +61,20 @@ namespace RozmieniarkaApp.ViewModels
         {
             ClearPageData();
             string status = await DownloadDataService.DownloadStatus(DataQueryType.Status);
-            if (status.Substring(0, 2) == "Er")
+            if (status[..2] == "Er")
             {
-                await Shell.Current.DisplayAlert("Błąd", "Nie udało się połączyć z urządzeniem:\n"+status.Substring(7), "OK");
+                await Shell.Current.DisplayAlert("Błąd", string.Concat("Nie udało się połączyć z urządzeniem:\n", status.AsSpan(7)), "OK");
             }
             else
             {
-                MachineStatusModel machineStatus = AnalyzeReplyService.AnalyzeStatusReply(status);
+                MachineStatusModel machineStatus = new();
+                machineStatus.FillMachineStatusFromStatusQuery(status.Substring(6, 10));
                 FillInPage(machineStatus);
             }
             IsPageRefreshing = false;
         }
         [RelayCommand]
-        public async Task GotoSettingsPage()
+        public static async Task GotoSettingsPage()
         {
             await Shell.Current.Navigation.PushAsync(new SettingsPage());
         }
