@@ -373,7 +373,7 @@
 
     <Style TargetType="Page" ApplyToDerivedTypes="True">
         <Setter Property="Padding" Value="0"/>
-        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" />
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Black}}" />
     </Style>
 
     <Style TargetType="Shell" ApplyToDerivedTypes="True">
@@ -383,7 +383,7 @@
         <Setter Property="Shell.DisabledColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray950}}" />
         <Setter Property="Shell.UnselectedColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray200}}" />
         <Setter Property="Shell.NavBarHasShadow" Value="False" />
-        <Setter Property="Shell.TabBarBackgroundColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" />
+        <Setter Property="Shell.TabBarBackgroundColor" Value="{AppThemeBinding Light={StaticResource Primary3}, Dark={StaticResource Tertiary3}}" />
         <Setter Property="Shell.TabBarForegroundColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
         <Setter Property="Shell.TabBarTitleColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
         <Setter Property="Shell.TabBarUnselectedColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray200}}" />
@@ -400,6 +400,68 @@
         <Setter Property="BarTextColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
         <Setter Property="UnselectedTabColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray950}}" />
         <Setter Property="SelectedTabColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray200}}" />
+    </Style>
+
+    
+    
+    
+    
+    
+    
+    
+    <Shadow x:Key="StatusShadow1"
+                    Brush="{StaticResource Gray900Brush}"
+                    Opacity="0.6"
+                    Offset="10,10"
+                    Radius="20"/>
+
+    <Style x:Key="StatusGridItem1a" TargetType="Grid">
+        <Setter Property="Shadow" Value="{StaticResource StatusShadow1}" />
+    </Style>
+
+    <Style x:Key="StatusGridItem1b" TargetType="Grid">
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Primary1}, Dark={StaticResource Tertiary1}}"/>
+        <Setter Property="Padding" Value="5" />
+    </Style>
+
+    <Style x:Key="StatusFrameItem1" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Primary1}, Dark={StaticResource Tertiary1}}"/>
+        <Setter Property="CornerRadius" Value="10"/>
+        <Setter Property="Padding" Value="5" />
+        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray950}}" />
+        <!--<Setter Property="Margin" Value="10,10,10,0"/>-->
+    </Style>
+
+    <Shadow x:Key="StatusShadow2"
+                    Brush="{StaticResource Gray900Brush}"
+                    Opacity="0.3"
+                    Offset="10,10"
+                    Radius="10"/>
+
+    <Style x:Key="StatusGridItem2a" TargetType="Grid">
+        <Setter Property="Shadow" Value="{StaticResource StatusShadow2}" />
+    </Style>
+
+    <Style x:Key="StatusGridItem2b" TargetType="Grid">
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Primary2}, Dark={StaticResource Tertiary2}}"/>
+    </Style>
+
+    <Style x:Key="StatusFrameItem2" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Primary2}, Dark={StaticResource Tertiary2}}"/>
+        <Setter Property="CornerRadius" Value="10"/>
+        <Setter Property="Padding" Value="5" />
+        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray950}}" />
+        <!--<Setter Property="Margin" Value="10,10,10,0"/>-->
+    </Style>
+
+    <Shadow x:Key="Shadow"
+                    Brush="{StaticResource Gray900Brush}"
+                    Opacity="0.6"
+                    Offset="10,10"
+                    Radius="20"/>
+
+    <Style x:Key="banknoteImage" TargetType="Image">
+        <Setter Property="Shadow" Value="{StaticResource Shadow}" />
     </Style>
 
 </ResourceDictionary>

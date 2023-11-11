@@ -11,227 +11,286 @@
     <ContentPage.Resources>
         <local2:AvailableBanknotesConverter x:Key="AvailableBanknotesConverter"/>
     </ContentPage.Resources>
+    <!-- TODO brush w czasie ładowania i popraw pozostale strony aby refreshview i scrollview pod sobą były. Trzeba tez reszte strony zrobic ładny nowy wygląd i chyba usun zdjecie 20zł tylko zostaw tekst-->
     <RefreshView
+        HorizontalOptions="FillAndExpand"
         IsRefreshing="{Binding IsPageRefreshing}"
         Command="{Binding RefreshMachineStatusCommand}">
-        <VerticalStackLayout>
-            <!-- Górna belka-->
-            <Grid
+        <ScrollView>
+            <VerticalStackLayout
+                VerticalOptions="FillAndExpand">
+                <!-- Górna belka-->
+                <Grid
                 MinimumHeightRequest="60"
                 BackgroundColor="{StaticResource Tertiary}">
-                <Label
+                    <Label
                     VerticalOptions="Center"
                     Padding="10,0,0,0"
                     FontSize="Body"
                     TextColor="white"
                     Text="Status rozmieniarki"/>
-                <Grid
+                    <Grid
                     Padding="0,0,10,0"
                     HorizontalOptions="EndAndExpand"
                     VerticalOptions="Center">
-                    <HorizontalStackLayout
+                        <HorizontalStackLayout
                         Spacing="20"
                         Padding="10">
-                        <ImageButton
+                            <ImageButton
                             Command="{Binding RefreshMachineStatusCommand}"
                             Source="refresh.png"
                             MaximumHeightRequest="30"
                             MaximumWidthRequest="30"
                             />
-                        <ImageButton
+                            <ImageButton
                             Source="setting.png"
                             Command="{Binding GotoSettingsPageCommand}"
                             MaximumHeightRequest="30"
                             MaximumWidthRequest="30"
                             />
-                    </HorizontalStackLayout>
+                        </HorizontalStackLayout>
+                    </Grid>
                 </Grid>
-            </Grid>
-            <!-- Statusy rozmieniarki-->
-            <ScrollView>
-                <VerticalStackLayout
-            Padding="10"
-            Spacing="10">
-                    <!-- Stan urządzenia-->
-                    <Grid
-                        Style="{StaticResource StatusGrid}"
-                Padding="5">
-                        <Label
-                   FontAttributes="Bold"
-                    Padding="10"
-                    Text="Stan urządzenia"
-                    HorizontalOptions="Start"/>
+                <!-- Statusy rozmieniarki-->
+                <Grid
+                    HorizontalOptions="FillAndExpand">
+                    <VerticalStackLayout
+                        Padding="10"
+                        Spacing="10">
+                        <!-- Stan urządzenia-->
                         <Grid
-                    Margin="0,0,20,0"
-                    HorizontalOptions="End">
-                            <Rectangle
-                        MaximumWidthRequest="30" 
-                        MaximumHeightRequest="30" 
-                        Fill="{Binding IsMachineOkColor}"
-                        Stroke="black"
-                        StrokeThickness="4"/>
+                        Style="{StaticResource StatusGridItem1a}">
+                            <Frame 
+                            Style="{StaticResource StatusFrameItem1}">
+                                <Grid
+                                Style="{StaticResource StatusGridItem1b}">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        Padding="10"
+                                        Text="Urządzenie"
+                                        HorizontalOptions="Start"/>
+                                    <Grid
+                                    Margin="0,0,20,0"
+                                    HorizontalOptions="End">
+                                        <Rectangle
+                                        MaximumWidthRequest="30"
+                                        MaximumHeightRequest="30"
+                                        Fill="{Binding IsMachineOkColor}"
+                                        Stroke="black"
+                                        StrokeThickness="4"/>
+                                    </Grid>
+                                </Grid>
+                            </Frame>
                         </Grid>
-                    </Grid>
-                    <!-- Stan hopperów-->
-                    <Grid
-                        Style="{StaticResource StatusGrid}">
-                        <VerticalStackLayout
-                Padding="10"
-                Spacing="7">
-                            <!-- Hopper 5zł-->
-                            <Grid
-                    Padding="5"
-                    BackgroundColor="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}">
-                                <Label
-                        FontAttributes="Bold"
-                        Padding="10"
-                        Text="Zasobnik 5 zł"
-                        HorizontalOptions="Start"/>
+                        <!-- Stan hopperów-->
+                        <Grid
+                        Style="{StaticResource StatusGridItem1a}">
+                            <Frame
+                            Style="{StaticResource StatusFrameItem1}">
                                 <Grid
-                        Margin="0,0,20,0"
-                        HorizontalOptions="End">
-                                    <Rectangle
-                            MaximumWidthRequest="30" 
-                            MaximumHeightRequest="30" 
-                            Fill="{Binding IsHopper5OkColor}"
-                            Stroke="black"
-                            StrokeThickness="4"/>
-                                </Grid>
-                            </Grid>
-                            <!-- Hopper 2zł-->
-                            <Grid
-                    Padding="5"
-                    BackgroundColor="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}">
-                                <Label
-                        FontAttributes="Bold"
-                        Padding="10"
-                        Text="Zasobnik 2 zł"
-                        HorizontalOptions="Start"/>
+                                Style="{StaticResource StatusGridItem1b}"
+                                Padding="0">
+                                    <VerticalStackLayout
+                                    Padding="10"
+                                    Spacing="7">
+                                        <Label
+                                    FontAttributes="Bold"
+                                    Padding="10"
+                                    Text="Hoppery"
+                                    HorizontalOptions="Start"/>
 
-                                <Grid
-                        Margin="0,0,20,0"
-                        HorizontalOptions="End">
-                                    <Rectangle
-                            MaximumWidthRequest="30" 
-                            MaximumHeightRequest="30" 
-                            Fill="{Binding IsHopper2OkColor}"
-                            Stroke="black"
-                            StrokeThickness="4"/>
+                                        <!-- Hopper 5zł-->
+                                        <Grid
+                                        Style="{StaticResource StatusGridItem2a}">
+                                            <Frame
+                                            Style="{StaticResource StatusFrameItem2}">
+                                                <Grid>
+                                                    <Label
+                                                    Padding="10"
+                                                    FontAttributes="Bold"
+                                                    Text="5 zł"
+                                                    HorizontalOptions="Start"/>
+                                                    <Grid
+                                                    Margin="0,0,20,0"
+                                                    HorizontalOptions="End">
+                                                        <Rectangle
+                                                        MaximumWidthRequest="30" 
+                                                        MaximumHeightRequest="30" 
+                                                        Fill="{Binding IsHopper5OkColor}"
+                                                        Stroke="black"
+                                                        StrokeThickness="4"/>
+                                                    </Grid>
+                                                </Grid>
+                                            </Frame>
+                                        </Grid>
+                                        <!-- Hopper 2zł-->
+                                        <Grid
+                                        Style="{StaticResource StatusGridItem2a}">
+                                            <Frame
+                                            Style="{StaticResource StatusFrameItem2}">
+                                                <Grid>
+                                                    <Label
+                                                    FontAttributes="Bold"
+                                                    Padding="10"
+                                                    Text="2 zł"
+                                                    HorizontalOptions="Start"/>
+                                                    <Grid
+                                                    Margin="0,0,20,0"
+                                                    HorizontalOptions="End">
+                                                        <Rectangle
+                                                        MaximumWidthRequest="30" 
+                                                        MaximumHeightRequest="30" 
+                                                        Fill="{Binding IsHopper2OkColor}"
+                                                        Stroke="black"
+                                                        StrokeThickness="4"/>
+                                                    </Grid>
+                                                </Grid>
+                                            </Frame>
+                                        </Grid>
+                                        <!-- Hopper 1zł-->
+                                        <Grid
+                                        Style="{StaticResource StatusGridItem2a}">
+                                            <Frame
+                                            Style="{StaticResource StatusFrameItem2}">
+                                                <Grid>
+                                                    <Label
+                                                    FontAttributes="Bold"
+                                                    Padding="10"
+                                                    Text="1 zł"
+                                                    HorizontalOptions="Start"/>
+                                                    <Grid
+                                                    Margin="0,0,20,0"
+                                                    HorizontalOptions="End">
+                                                        <Rectangle
+                                                        MaximumWidthRequest="30" 
+                                                        MaximumHeightRequest="30" 
+                                                        Fill="{Binding IsHopper1OkColor}"
+                                                        Stroke="black"
+                                                        StrokeThickness="4"/>
+                                                    </Grid>
+                                                </Grid>
+                                            </Frame>
+                                        </Grid>
+                                    </VerticalStackLayout>
                                 </Grid>
-                            </Grid>
-                            <!-- Hopper 1zł-->
-                            <Grid
-                    Padding="5"
-                    BackgroundColor="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}">
-                                <Label
-                        FontAttributes="Bold"
-                        Padding="10"
-                        Text="Zasobnik 1 zł"
-                        HorizontalOptions="Start"/>
-                                <Grid
-                        Margin="0,0,20,0"
-                        HorizontalOptions="End">
-                                    <Rectangle
-                            MaximumWidthRequest="30" 
-                            MaximumHeightRequest="30" 
-                            Fill="{Binding IsHopper1OkColor}"
-                            Stroke="black"
-                            StrokeThickness="4"/>
-                                </Grid>
-                            </Grid>
-                        </VerticalStackLayout>
-                    </Grid>
-                    <!-- Stan kasety-->
-                    <Grid
-                        Style="{StaticResource StatusGrid}"
+                            </Frame>
+                        </Grid>
+                        <!-- Stan kasety-->
+                        <Grid
                         IsVisible="false"
+                        Style="{StaticResource StatusGridItem1a}">
+                            <Frame 
+                            Style="{StaticResource StatusFrameItem1}">
+                                <Grid
+                        Style="{StaticResource StatusGridItem1b}"
                         Padding="5">
-                        <Label
+                                    <Label
                     FontAttributes="Bold"
                     Padding="10"
                     Text="Stan kasety"
                     HorizontalOptions="Start"/>
-                        <Grid
+                                    <Grid
                     Margin="0,0,20,0"
                     HorizontalOptions="End">
-                            <Rectangle
+                                        <Rectangle
                         MaximumWidthRequest="30" 
                         MaximumHeightRequest="30" 
                         Fill="{Binding IsCasetteOkColor}"
                         Stroke="black"
                         StrokeThickness="4"/>
+                                    </Grid>
+                                </Grid>
+                            </Frame>
                         </Grid>
-                    </Grid>
-                    <!-- Stan drzwi-->
-                    <Grid
-                        Style="{StaticResource StatusGrid}"
-                Padding="5">
-                        <Label
+                        <!-- Stan drzwi-->
+                        <Grid
+                        Style="{StaticResource StatusGridItem1a}">
+                            <Frame
+                            Style="{StaticResource StatusFrameItem1}">
+                                <Grid
+                                Style="{StaticResource StatusGridItem1b}">
+                                    <Label
                     FontAttributes="Bold"
                     Padding="10"
                     Text="Stan drzwi"
                     HorizontalOptions="Start"/>
-                        <Grid
+                                    <Grid
                     Margin="0,0,20,0"
                     HorizontalOptions="End">
-                            <Rectangle
+                                        <Rectangle
                         MaximumWidthRequest="30" 
                         MaximumHeightRequest="30" 
                         Fill="{Binding IsDoorOkColor}"
                         Stroke="black"
                         StrokeThickness="4"/>
+                                    </Grid>
+                                </Grid>
+                            </Frame>
                         </Grid>
-                    </Grid>
-                    <!-- Stan czytnika-->
-                    <Grid
-                        Style="{StaticResource StatusGrid}"
+                        <!-- Stan czytnika-->
+                        <Grid
+                        Style="{StaticResource StatusGridItem1a}">
+                            <Frame 
+                            Style="{StaticResource StatusFrameItem1}">
+                                <Grid
+                        Style="{StaticResource StatusGridItem1b}"
                 Padding="5">
-                        <Label
+                                    <Label
                     FontAttributes="Bold"
                     Padding="10"
                     Text="Stan czytnika"
                     HorizontalOptions="Start"/>
-                        <Grid
+                                    <Grid
                     Margin="0,0,20,0"
                     HorizontalOptions="End">
-                            <Rectangle
+                                        <Rectangle
                         MaximumWidthRequest="30" 
                         MaximumHeightRequest="30" 
                         Fill="{Binding IsReaderOkColor}"
                         Stroke="black"
                         StrokeThickness="4"/>
+                                    </Grid>
+                                </Grid>
+                            </Frame>
                         </Grid>
-                    </Grid>
-                    <!-- Liczba banknotów w kasecie-->
-                    <Grid
-                        Style="{StaticResource StatusGrid}"
+                        <!-- Liczba banknotów w kasecie-->
+                        <Grid
+                        Style="{StaticResource StatusGridItem1a}">
+                            <Frame 
+                            Style="{StaticResource StatusFrameItem1}">
+                                <Grid
+                        Style="{StaticResource StatusGridItem1b}"
                 Padding="5">
-                        <HorizontalStackLayout
+                                    <HorizontalStackLayout
                             HorizontalOptions="Start"
                             Padding="10,1,0,1"
                             Spacing="10">
-                            <Label
+                                        <Label
                                 VerticalOptions="Center"
                                 Text="Kaseta"
                                 FontAttributes="Bold"/>
-                            <Image
+                                        <Image
                             Source="banknote20zl.png"
                             MaximumHeightRequest="40"
                             HorizontalOptions="Start"/>
-                        </HorizontalStackLayout>
-                        <Grid
+                                    </HorizontalStackLayout>
+                                    <Grid
                     Margin="0,0,27,0"
                     HorizontalOptions="End">
-                            <Label
+                                        <Label
                                 VerticalOptions="Center"
                                 Text="{Binding NumberOfBanknotesAvailable,
                                 Converter={StaticResource AvailableBanknotesConverter}}"
                                 />
+                                    </Grid>
+                                </Grid>
+                            </Frame>
                         </Grid>
-                    </Grid>
-                </VerticalStackLayout>
-            </ScrollView>
-        </VerticalStackLayout>
+
+                    </VerticalStackLayout>
+                </Grid>
+            </VerticalStackLayout>
+        </ScrollView>
     </RefreshView>
 
 </ContentPage>
