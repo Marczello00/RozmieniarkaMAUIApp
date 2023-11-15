@@ -91,7 +91,7 @@
                                 Style="{StaticResource StatusGridItem1b}"
                                 Padding="0">
                                     <VerticalStackLayout
-                                    Padding="10"
+                                    Padding="5"
                                     Spacing="7">
                                         <Label
                                     FontAttributes="Bold"
@@ -233,8 +233,7 @@
                             <Frame 
                             Style="{StaticResource StatusFrameItem1}">
                                 <Grid
-                        Style="{StaticResource StatusGridItem1b}"
-                Padding="5">
+                                    Style="{StaticResource StatusGridItem1b}">
                                     <Label
                     FontAttributes="Bold"
                     Padding="10"
@@ -259,21 +258,12 @@
                             <Frame 
                             Style="{StaticResource StatusFrameItem1}">
                                 <Grid
-                        Style="{StaticResource StatusGridItem1b}"
-                Padding="5">
-                                    <HorizontalStackLayout
-                            HorizontalOptions="Start"
-                            Padding="10,1,0,1"
-                            Spacing="10">
+                                    Style="{StaticResource StatusGridItem1b}">
                                         <Label
                                 VerticalOptions="Center"
-                                Text="Kaseta"
+                                        Padding="10"
+                                        Text="Kaseta 20 zł"
                                 FontAttributes="Bold"/>
-                                        <Image
-                            Source="banknote20zl.png"
-                            MaximumHeightRequest="40"
-                            HorizontalOptions="Start"/>
-                                    </HorizontalStackLayout>
                                     <Grid
                     Margin="0,0,27,0"
                     HorizontalOptions="End">
