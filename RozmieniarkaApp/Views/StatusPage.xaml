@@ -52,7 +52,7 @@
                     </Grid>
                 </Grid>
                 <!-- Statusy rozmieniarki-->
-                <Grid
+                <Grid x:Name="StatusItemsGrid"
                     HorizontalOptions="FillAndExpand">
                     <VerticalStackLayout
                         Padding="10"
@@ -81,7 +81,35 @@
                                     </Grid>
                                 </Grid>
                             </Frame>
+                            
+                            <!-- Maska gradientowa na czas odświeżania-->
+                            <Grid
+                                IsVisible="{Binding IsPageRefreshing}">
+                                <Border Style="{StaticResource StatusGridItemMask}">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle Style="{StaticResource RoundRectangleMask}"/>
+                                    </Border.StrokeShape>
+                                    <Grid >
+                                        <Grid.Background>
+                                            <LinearGradientBrush
+                                                StartPoint="0,0"
+                                                EndPoint="1,0">
+                                                <GradientStop
+                                                    x:Name="firstStop"
+                                                    Color="{AppThemeBinding Light={StaticResource Cyan200Accent}, Dark={StaticResource Blue025Accent}}"
+                                                    Offset="0"/>
+                                                <GradientStop
+                                                    x:Name="secondStop"
+                                                    Color="{AppThemeBinding Light={StaticResource Cyan300Accent}, Dark={StaticResource Blue050Accent}}"
+                                                    Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Grid.Background>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                            
                         </Grid>
+                        
                         <!-- Stan hopperów-->
                         <Grid
                         Style="{StaticResource StatusGridItem1a}">
@@ -98,7 +126,6 @@
                                     Padding="10"
                                     Text="Hoppery"
                                     HorizontalOptions="Start"/>
-
                                         <!-- Hopper 5zł-->
                                         <Grid
                                         Style="{StaticResource StatusGridItem2a}">
@@ -122,6 +149,33 @@
                                                     </Grid>
                                                 </Grid>
                                             </Frame>
+
+                                            <!-- Maska gradientowa na czas odświeżania-->
+                                            <Grid
+                                IsVisible="{Binding IsPageRefreshing}">
+                                                <Border Style="{StaticResource StatusGridItemMask}">
+                                                    <Border.StrokeShape>
+                                                        <RoundRectangle Style="{StaticResource RoundRectangleMask}"/>
+                                                    </Border.StrokeShape>
+                                                    <Grid>
+                                                        <Grid.Background>
+                                                            <LinearGradientBrush
+                                                StartPoint="0,0"
+                                                EndPoint="1,0">
+                                                                <GradientStop
+                                                    x:Name="firstStop2"
+                                                    Color="{AppThemeBinding Light={StaticResource Cyan200Accent}, Dark={StaticResource Blue025Accent}}"
+                                                    Offset="0"/>
+                                                                <GradientStop
+                                                    x:Name="secondStop2"
+                                                    Color="{AppThemeBinding Light={StaticResource Cyan300Accent}, Dark={StaticResource Blue050Accent}}"
+                                                    Offset="1"/>
+                                                            </LinearGradientBrush>
+                                                        </Grid.Background>
+                                                    </Grid>
+                                                </Border>
+                                            </Grid>
+
                                         </Grid>
                                         <!-- Hopper 2zł-->
                                         <Grid
@@ -146,6 +200,33 @@
                                                     </Grid>
                                                 </Grid>
                                             </Frame>
+
+                                            <!-- Maska gradientowa na czas odświeżania-->
+                                            <Grid
+                                IsVisible="{Binding IsPageRefreshing}">
+                                                <Border Style="{StaticResource StatusGridItemMask}">
+                                                    <Border.StrokeShape>
+                                                        <RoundRectangle Style="{StaticResource RoundRectangleMask}"/>
+                                                    </Border.StrokeShape>
+                                                    <Grid>
+                                                        <Grid.Background>
+                                                            <LinearGradientBrush
+                                                StartPoint="0,0"
+                                                EndPoint="1,0">
+                                                                <GradientStop
+                                                    x:Name="firstStop3"
+                                                    Color="{AppThemeBinding Light={StaticResource Cyan200Accent}, Dark={StaticResource Blue025Accent}}"
+                                                    Offset="0"/>
+                                                                <GradientStop
+                                                    x:Name="secondStop3"
+                                                    Color="{AppThemeBinding Light={StaticResource Cyan300Accent}, Dark={StaticResource Blue050Accent}}"
+                                                    Offset="1"/>
+                                                            </LinearGradientBrush>
+                                                        </Grid.Background>
+                                                    </Grid>
+                                                </Border>
+                                            </Grid>
+
                                         </Grid>
                                         <!-- Hopper 1zł-->
                                         <Grid
@@ -170,6 +251,33 @@
                                                     </Grid>
                                                 </Grid>
                                             </Frame>
+
+                                            <!-- Maska gradientowa na czas odświeżania-->
+                                            <Grid
+                                IsVisible="{Binding IsPageRefreshing}">
+                                                <Border Style="{StaticResource StatusGridItemMask}">
+                                                    <Border.StrokeShape>
+                                                        <RoundRectangle Style="{StaticResource RoundRectangleMask}"/>
+                                                    </Border.StrokeShape>
+                                                    <Grid>
+                                                        <Grid.Background>
+                                                            <LinearGradientBrush
+                                                StartPoint="0,0"
+                                                EndPoint="1,0">
+                                                                <GradientStop
+                                                    x:Name="firstStop4"
+                                                    Color="{AppThemeBinding Light={StaticResource Cyan200Accent}, Dark={StaticResource Blue025Accent}}"
+                                                    Offset="0"/>
+                                                                <GradientStop
+                                                    x:Name="secondStop4"
+                                                    Color="{AppThemeBinding Light={StaticResource Cyan300Accent}, Dark={StaticResource Blue050Accent}}"
+                                                    Offset="1"/>
+                                                            </LinearGradientBrush>
+                                                        </Grid.Background>
+                                                    </Grid>
+                                                </Border>
+                                            </Grid>
+
                                         </Grid>
                                     </VerticalStackLayout>
                                 </Grid>
@@ -201,6 +309,33 @@
                                     </Grid>
                                 </Grid>
                             </Frame>
+
+                            <!-- Maska gradientowa na czas odświeżania-->
+                            <Grid
+                                IsVisible="{Binding IsPageRefreshing}">
+                                <Border Style="{StaticResource StatusGridItemMask}">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle Style="{StaticResource RoundRectangleMask}"/>
+                                    </Border.StrokeShape>
+                                    <Grid >
+                                        <Grid.Background>
+                                            <LinearGradientBrush
+                                                StartPoint="0,0"
+                                                EndPoint="1,0">
+                                                <GradientStop
+                                                    x:Name="firstStop5"
+                                                    Color="{AppThemeBinding Light={StaticResource Cyan200Accent}, Dark={StaticResource Blue025Accent}}"
+                                                    Offset="0"/>
+                                                <GradientStop
+                                                    x:Name="secondStop5"
+                                                    Color="{AppThemeBinding Light={StaticResource Cyan300Accent}, Dark={StaticResource Blue050Accent}}"
+                                                    Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Grid.Background>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+
                         </Grid>
                         <!-- Stan drzwi-->
                         <Grid
@@ -226,32 +361,85 @@
                                     </Grid>
                                 </Grid>
                             </Frame>
+
+                            <!-- Maska gradientowa na czas odświeżania-->
+                            <Grid
+                                IsVisible="{Binding IsPageRefreshing}">
+                                <Border Style="{StaticResource StatusGridItemMask}">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle Style="{StaticResource RoundRectangleMask}"/>
+                                    </Border.StrokeShape>
+                                    <Grid >
+                                        <Grid.Background>
+                                            <LinearGradientBrush
+                                                StartPoint="0,0"
+                                                EndPoint="1,0">
+                                                <GradientStop
+                                                    x:Name="firstStop6"
+                                                    Color="{AppThemeBinding Light={StaticResource Cyan200Accent}, Dark={StaticResource Blue025Accent}}"
+                                                    Offset="0"/>
+                                                <GradientStop
+                                                    x:Name="secondStop6"
+                                                    Color="{AppThemeBinding Light={StaticResource Cyan300Accent}, Dark={StaticResource Blue050Accent}}"
+                                                    Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Grid.Background>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+
                         </Grid>
                         <!-- Stan czytnika-->
                         <Grid
                         Style="{StaticResource StatusGridItem1a}">
                             <Frame 
-                            Style="{StaticResource StatusFrameItem1}">
+                                Style="{StaticResource StatusFrameItem1}">
                                 <Grid
-                        Style="{StaticResource StatusGridItem1b}"
-                Padding="5">
+                                    Style="{StaticResource StatusGridItem1b}">
                                     <Label
-                    FontAttributes="Bold"
-                    Padding="10"
-                    Text="Stan czytnika"
-                    HorizontalOptions="Start"/>
+                                        FontAttributes="Bold"
+                                        Padding="10"
+                                        Text="Stan czytnika"
+                                        HorizontalOptions="Start"/>
                                     <Grid
-                    Margin="0,0,20,0"
-                    HorizontalOptions="End">
+                                        Margin="0,0,20,0"
+                                        HorizontalOptions="End">
                                         <Rectangle
-                        MaximumWidthRequest="30" 
-                        MaximumHeightRequest="30" 
-                        Fill="{Binding IsReaderOkColor}"
-                        Stroke="black"
-                        StrokeThickness="4"/>
+                                            MaximumWidthRequest="30" 
+                                            MaximumHeightRequest="30" 
+                                            Fill="{Binding IsReaderOkColor}"
+                                            Stroke="black"
+                                            StrokeThickness="4"/>
                                     </Grid>
                                 </Grid>
                             </Frame>
+
+                            <!-- Maska gradientowa na czas odświeżania-->
+                            <Grid
+                                IsVisible="{Binding IsPageRefreshing}">
+                                <Border Style="{StaticResource StatusGridItemMask}">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle Style="{StaticResource RoundRectangleMask}"/>
+                                    </Border.StrokeShape>
+                                    <Grid >
+                                        <Grid.Background>
+                                            <LinearGradientBrush
+                                                StartPoint="0,0"
+                                                EndPoint="1,0">
+                                                <GradientStop
+                                                    x:Name="firstStop7"
+                                                    Color="{AppThemeBinding Light={StaticResource Cyan200Accent}, Dark={StaticResource Blue025Accent}}"
+                                                    Offset="0"/>
+                                                <GradientStop
+                                                    x:Name="secondStop7"
+                                                    Color="{AppThemeBinding Light={StaticResource Cyan300Accent}, Dark={StaticResource Blue050Accent}}"
+                                                    Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Grid.Background>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+
                         </Grid>
                         <!-- Liczba banknotów w kasecie-->
                         <Grid
@@ -259,32 +447,50 @@
                             <Frame 
                             Style="{StaticResource StatusFrameItem1}">
                                 <Grid
-                        Style="{StaticResource StatusGridItem1b}"
-                Padding="5">
-                                    <HorizontalStackLayout
-                            HorizontalOptions="Start"
-                            Padding="10,1,0,1"
-                            Spacing="10">
-                                        <Label
-                                VerticalOptions="Center"
-                                Text="Kaseta"
-                                FontAttributes="Bold"/>
-                                        <Image
-                            Source="banknote20zl.png"
-                            MaximumHeightRequest="40"
-                            HorizontalOptions="Start"/>
-                                    </HorizontalStackLayout>
+                                    Style="{StaticResource StatusGridItem1b}">
+                                    <Label
+                                        VerticalOptions="Center"
+                                        Padding="10"
+                                        Text="Kaseta 20 zł"
+                                        FontAttributes="Bold"/>
                                     <Grid
-                    Margin="0,0,27,0"
-                    HorizontalOptions="End">
+                                        Margin="0,0,27,0"
+                                        HorizontalOptions="End">
                                         <Label
-                                VerticalOptions="Center"
-                                Text="{Binding NumberOfBanknotesAvailable,
-                                Converter={StaticResource AvailableBanknotesConverter}}"
-                                />
+                                            VerticalOptions="Center"
+                                            Text="{Binding NumberOfBanknotesAvailable,
+                                            Converter={StaticResource AvailableBanknotesConverter}}"
+                                            />
                                     </Grid>
                                 </Grid>
                             </Frame>
+
+                            <!-- Maska gradientowa na czas odświeżania-->
+                            <Grid
+                                IsVisible="{Binding IsPageRefreshing}">
+                                <Border Style="{StaticResource StatusGridItemMask}">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle Style="{StaticResource RoundRectangleMask}"/>
+                                    </Border.StrokeShape>
+                                    <Grid >
+                                        <Grid.Background>
+                                            <LinearGradientBrush
+                                                StartPoint="0,0"
+                                                EndPoint="1,0">
+                                                <GradientStop
+                                                    x:Name="firstStop8"
+                                                    Color="{AppThemeBinding Light={StaticResource Cyan200Accent}, Dark={StaticResource Blue025Accent}}"
+                                                    Offset="0"/>
+                                                <GradientStop
+                                                    x:Name="secondStop8"
+                                                    Color="{AppThemeBinding Light={StaticResource Cyan300Accent}, Dark={StaticResource Blue050Accent}}"
+                                                    Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Grid.Background>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+
                         </Grid>
 
                     </VerticalStackLayout>

@@ -402,13 +402,11 @@
         <Setter Property="SelectedTabColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray200}}" />
     </Style>
 
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
     <Shadow x:Key="StatusShadow1"
                     Brush="{StaticResource Gray900Brush}"
                     Opacity="0.6"
@@ -462,6 +460,19 @@
 
     <Style x:Key="banknoteImage" TargetType="Image">
         <Setter Property="Shadow" Value="{StaticResource Shadow}" />
+    </Style>
+
+
+
+
+    <!-- Status grid items mask properties-->
+    <x:Double x:Key="StatusGridItemCornerRadius">10</x:Double>
+    
+    <Style x:Key="StatusGridItemMask" TargetType="Border">
+        <Setter Property="StrokeThickness" Value="-0.5"/>
+    </Style>
+    <Style x:Key="RoundRectangleMask" TargetType="RoundRectangle">
+        <Setter Property="CornerRadius" Value="{StaticResource StatusGridItemCornerRadius}" />
     </Style>
 
 </ResourceDictionary>
