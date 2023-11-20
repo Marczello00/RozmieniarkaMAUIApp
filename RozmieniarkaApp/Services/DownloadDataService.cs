@@ -43,6 +43,8 @@ namespace RozmieniarkaApp.Services
                 }
                 catch (Exception ex)
                 {
+                    //https://learn.microsoft.com/en-us/dotnet/api/system.net.sockets.tcpclient.connectasync?view=net-7.0
+                    // TODO handle diffrent errors
                     status = "Error: " + ex.Message;
                 }
                 if (client.Connected)
