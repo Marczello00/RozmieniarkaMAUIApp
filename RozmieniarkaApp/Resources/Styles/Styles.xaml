@@ -464,4 +464,17 @@
         <Setter Property="Shadow" Value="{StaticResource Shadow}" />
     </Style>
 
+    <Style x:Key="StatusGridItemLabel" TargetType="Label">
+        <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="Padding" Value="10"/>
+    </Style>
+
+    <Style x:Key="StatusGridItemRectangle" TargetType="Rectangle">
+        <Setter Property="MaximumHeightRequest" Value="30"/>
+        <Setter Property="MaximumWidthRequest" Value="30"/>
+        <Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource Gray950Brush}, Dark={StaticResource Gray600}}"/>
+        <Setter Property="StrokeThickness" Value="4"/>
+    </Style>
+
 </ResourceDictionary>

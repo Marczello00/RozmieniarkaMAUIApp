@@ -11,7 +11,7 @@
     <ContentPage.Resources>
         <local2:AvailableBanknotesConverter x:Key="AvailableBanknotesConverter"/>
     </ContentPage.Resources>
-    <!-- TODO brush w czasie ładowania i popraw pozostale strony aby refreshview i scrollview pod sobą były. Trzeba tez reszte strony zrobic ładny nowy wygląd i chyba usun zdjecie 20zł tylko zostaw tekst-->
+    <!-- TODO Trzeba tez reszte strony zrobic ładny nowy wygląd-->
     <RefreshView
         HorizontalOptions="FillAndExpand"
         IsRefreshing="{Binding IsPageRefreshing}"
@@ -59,219 +59,183 @@
                         Spacing="10">
                         <!-- Stan urządzenia-->
                         <Grid
-                        Style="{StaticResource StatusGridItem1a}">
+                            Style="{StaticResource StatusGridItem1a}">
                             <Frame 
-                            Style="{StaticResource StatusFrameItem1}">
+                                Style="{StaticResource StatusFrameItem1}">
                                 <Grid
-                                Style="{StaticResource StatusGridItem1b}">
+                                    Style="{StaticResource StatusGridItem1b}">
                                     <Label
-                                        FontAttributes="Bold"
-                                        Padding="10"
-                                        Text="Urządzenie"
-                                        HorizontalOptions="Start"/>
+                                        Style="{StaticResource StatusGridItemLabel}"
+                                        Text="Urządzenie"/>
                                     <Grid
-                                    Margin="0,0,20,0"
-                                    HorizontalOptions="End">
+                                        Margin="0,0,20,0"
+                                        HorizontalOptions="End">
                                         <Rectangle
-                                        MaximumWidthRequest="30"
-                                        MaximumHeightRequest="30"
-                                        Fill="{Binding IsMachineOkColor}"
-                                        Stroke="black"
-                                        StrokeThickness="4"/>
+                                            Style="{StaticResource StatusGridItemRectangle}"
+                                            Fill="{Binding IsMachineOkColor}"/>
                                     </Grid>
                                 </Grid>
                             </Frame>
                         </Grid>
                         <!-- Stan hopperów-->
                         <Grid
-                        Style="{StaticResource StatusGridItem1a}">
+                            Style="{StaticResource StatusGridItem1a}">
                             <Frame
-                            Style="{StaticResource StatusFrameItem1}">
+                                Style="{StaticResource StatusFrameItem1}">
                                 <Grid
-                                Style="{StaticResource StatusGridItem1b}"
-                                Padding="0">
+                                    Style="{StaticResource StatusGridItem1b}"
+                                    Padding="0">
                                     <VerticalStackLayout
-                                    Padding="5"
-                                    Spacing="7">
+                                        Padding="5"
+                                        Spacing="7">
                                         <Label
-                                    FontAttributes="Bold"
-                                    Padding="10"
-                                    Text="Hoppery"
-                                    HorizontalOptions="Start"/>
-
+                                            Style="{StaticResource StatusGridItemLabel}"
+                                            Text="Hoppery"/>
+                                        
                                         <!-- Hopper 5zł-->
                                         <Grid
-                                        Style="{StaticResource StatusGridItem2a}">
+                                            Style="{StaticResource StatusGridItem2a}">
                                             <Frame
-                                            Style="{StaticResource StatusFrameItem2}">
+                                                Style="{StaticResource StatusFrameItem2}">
                                                 <Grid>
                                                     <Label
-                                                    Padding="10"
-                                                    FontAttributes="Bold"
-                                                    Text="5 zł"
-                                                    HorizontalOptions="Start"/>
+                                                        Style="{StaticResource StatusGridItemLabel}"
+                                                        Text="5 zł"/>
                                                     <Grid
-                                                    Margin="0,0,20,0"
-                                                    HorizontalOptions="End">
+                                                        Margin="0,0,20,0"
+                                                        HorizontalOptions="End">
                                                         <Rectangle
-                                                        MaximumWidthRequest="30" 
-                                                        MaximumHeightRequest="30" 
-                                                        Fill="{Binding IsHopper5OkColor}"
-                                                        Stroke="black"
-                                                        StrokeThickness="4"/>
+                                                            Style="{StaticResource StatusGridItemRectangle}"
+                                                            Fill="{Binding IsHopper5OkColor}"/>
                                                     </Grid>
                                                 </Grid>
                                             </Frame>
                                         </Grid>
+                                        
                                         <!-- Hopper 2zł-->
                                         <Grid
-                                        Style="{StaticResource StatusGridItem2a}">
+                                            Style="{StaticResource StatusGridItem2a}">
                                             <Frame
-                                            Style="{StaticResource StatusFrameItem2}">
+                                                Style="{StaticResource StatusFrameItem2}">
                                                 <Grid>
                                                     <Label
-                                                    FontAttributes="Bold"
-                                                    Padding="10"
-                                                    Text="2 zł"
-                                                    HorizontalOptions="Start"/>
+                                                        Style="{StaticResource StatusGridItemLabel}"
+                                                        Text="2 zł"/>
                                                     <Grid
-                                                    Margin="0,0,20,0"
-                                                    HorizontalOptions="End">
+                                                        Margin="0,0,20,0"
+                                                        HorizontalOptions="End">
                                                         <Rectangle
-                                                        MaximumWidthRequest="30" 
-                                                        MaximumHeightRequest="30" 
-                                                        Fill="{Binding IsHopper2OkColor}"
-                                                        Stroke="black"
-                                                        StrokeThickness="4"/>
+                                                            Style="{StaticResource StatusGridItemRectangle}"
+                                                            Fill="{Binding IsHopper2OkColor}"/>
                                                     </Grid>
                                                 </Grid>
                                             </Frame>
                                         </Grid>
+                                        
                                         <!-- Hopper 1zł-->
                                         <Grid
-                                        Style="{StaticResource StatusGridItem2a}">
+                                            Style="{StaticResource StatusGridItem2a}">
                                             <Frame
-                                            Style="{StaticResource StatusFrameItem2}">
+                                                Style="{StaticResource StatusFrameItem2}">
                                                 <Grid>
                                                     <Label
-                                                    FontAttributes="Bold"
-                                                    Padding="10"
-                                                    Text="1 zł"
-                                                    HorizontalOptions="Start"/>
+                                                        Style="{StaticResource StatusGridItemLabel}"
+                                                        Text="1 zł"/>
                                                     <Grid
-                                                    Margin="0,0,20,0"
-                                                    HorizontalOptions="End">
+                                                        Margin="0,0,20,0"
+                                                        HorizontalOptions="End">
                                                         <Rectangle
-                                                        MaximumWidthRequest="30" 
-                                                        MaximumHeightRequest="30" 
-                                                        Fill="{Binding IsHopper1OkColor}"
-                                                        Stroke="black"
-                                                        StrokeThickness="4"/>
+                                                            Style="{StaticResource StatusGridItemRectangle}"
+                                                            Fill="{Binding IsHopper1OkColor}"/>
                                                     </Grid>
                                                 </Grid>
                                             </Frame>
                                         </Grid>
+                                        
                                     </VerticalStackLayout>
                                 </Grid>
                             </Frame>
                         </Grid>
                         <!-- Stan kasety-->
                         <Grid
-                        IsVisible="false"
-                        Style="{StaticResource StatusGridItem1a}">
+                            IsVisible="false"
+                            Style="{StaticResource StatusGridItem1a}">
                             <Frame 
-                            Style="{StaticResource StatusFrameItem1}">
+                                Style="{StaticResource StatusFrameItem1}">
                                 <Grid
-                        Style="{StaticResource StatusGridItem1b}"
-                        Padding="5">
+                                    Style="{StaticResource StatusGridItem1b}"
+                                    Padding="5">
                                     <Label
-                    FontAttributes="Bold"
-                    Padding="10"
-                    Text="Stan kasety"
-                    HorizontalOptions="Start"/>
+                                        Style="{StaticResource StatusGridItemLabel}"
+                                        Text="Kaseta"/>
                                     <Grid
-                    Margin="0,0,20,0"
-                    HorizontalOptions="End">
+                                        Margin="0,0,20,0"
+                                        HorizontalOptions="End">
                                         <Rectangle
-                        MaximumWidthRequest="30" 
-                        MaximumHeightRequest="30" 
-                        Fill="{Binding IsCasetteOkColor}"
-                        Stroke="black"
-                        StrokeThickness="4"/>
+                                            Style="{StaticResource StatusGridItemRectangle}"
+                                            Fill="{Binding IsCasetteOkColor}"/>
                                     </Grid>
                                 </Grid>
                             </Frame>
                         </Grid>
                         <!-- Stan drzwi-->
                         <Grid
-                        Style="{StaticResource StatusGridItem1a}">
+                            Style="{StaticResource StatusGridItem1a}">
                             <Frame
-                            Style="{StaticResource StatusFrameItem1}">
+                                Style="{StaticResource StatusFrameItem1}">
                                 <Grid
-                                Style="{StaticResource StatusGridItem1b}">
+                                    Style="{StaticResource StatusGridItem1b}">
                                     <Label
-                    FontAttributes="Bold"
-                    Padding="10"
-                    Text="Stan drzwi"
-                    HorizontalOptions="Start"/>
+                                        Style="{StaticResource StatusGridItemLabel}"
+                                        Text="Drzwi"/>
                                     <Grid
-                    Margin="0,0,20,0"
-                    HorizontalOptions="End">
+                                        Margin="0,0,20,0"
+                                        HorizontalOptions="End">
                                         <Rectangle
-                        MaximumWidthRequest="30" 
-                        MaximumHeightRequest="30" 
-                        Fill="{Binding IsDoorOkColor}"
-                        Stroke="black"
-                        StrokeThickness="4"/>
+                                            Style="{StaticResource StatusGridItemRectangle}"
+                                            Fill="{Binding IsDoorOkColor}"/>
                                     </Grid>
                                 </Grid>
                             </Frame>
                         </Grid>
                         <!-- Stan czytnika-->
                         <Grid
-                        Style="{StaticResource StatusGridItem1a}">
+                            Style="{StaticResource StatusGridItem1a}">
                             <Frame 
-                            Style="{StaticResource StatusFrameItem1}">
+                                Style="{StaticResource StatusFrameItem1}">
                                 <Grid
                                     Style="{StaticResource StatusGridItem1b}">
                                     <Label
-                    FontAttributes="Bold"
-                    Padding="10"
-                    Text="Stan czytnika"
-                    HorizontalOptions="Start"/>
+                                        Style="{StaticResource StatusGridItemLabel}"
+                                        Text="Czytnik"/>
                                     <Grid
-                    Margin="0,0,20,0"
-                    HorizontalOptions="End">
+                                        Margin="0,0,20,0"
+                                        HorizontalOptions="End">
                                         <Rectangle
-                        MaximumWidthRequest="30" 
-                        MaximumHeightRequest="30" 
-                        Fill="{Binding IsReaderOkColor}"
-                        Stroke="black"
-                        StrokeThickness="4"/>
+                                            Style="{StaticResource StatusGridItemRectangle}"
+                                            Fill="{Binding IsReaderOkColor}"/>
                                     </Grid>
                                 </Grid>
                             </Frame>
                         </Grid>
                         <!-- Liczba banknotów w kasecie-->
                         <Grid
-                        Style="{StaticResource StatusGridItem1a}">
+                            Style="{StaticResource StatusGridItem1a}">
                             <Frame 
-                            Style="{StaticResource StatusFrameItem1}">
+                                Style="{StaticResource StatusFrameItem1}">
                                 <Grid
                                     Style="{StaticResource StatusGridItem1b}">
-                                        <Label
-                                VerticalOptions="Center"
-                                        Padding="10"
-                                        Text="Kaseta 20 zł"
-                                FontAttributes="Bold"/>
+                                    <Label
+                                        Style="{StaticResource StatusGridItemLabel}"
+                                        Text="Kaseta 20 zł"/>
                                     <Grid
-                    Margin="0,0,27,0"
-                    HorizontalOptions="End">
+                                        Margin="0,0,27,0"
+                                        HorizontalOptions="End">
                                         <Label
-                                VerticalOptions="Center"
-                                Text="{Binding NumberOfBanknotesAvailable,
-                                Converter={StaticResource AvailableBanknotesConverter}}"
-                                />
+                                            VerticalOptions="Center"
+                                            Text="{Binding NumberOfBanknotesAvailable,
+                                            Converter={StaticResource AvailableBanknotesConverter}}"
+                                            />
                                     </Grid>
                                 </Grid>
                             </Frame>

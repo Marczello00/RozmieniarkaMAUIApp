@@ -10,178 +10,180 @@
     <RefreshView
         IsRefreshing="{Binding IsPageRefreshing}"
         Command="{Binding RefreshWithdrawnPageCommand}">
-        <VerticalStackLayout>
-            <!-- Górna belka-->
-            <Grid
+        <ScrollView>
+            <VerticalStackLayout>
+                <!-- Górna belka-->
+                <Grid
                 MinimumHeightRequest="60"
                 BackgroundColor="{StaticResource Tertiary}">
-                <Label
+                    <Label
                     VerticalOptions="Center"
                     Padding="10,0,0,0"
                     FontSize="Body"
                     TextColor="white"
                     Text="Wypłacone monety"/>
-                <Grid
+                    <Grid
                     Padding="0,0,20,0"
                     HorizontalOptions="EndAndExpand"
                     VerticalOptions="Center">
-                    <ImageButton
+                        <ImageButton
                             Source="refresh.png"
                             MaximumHeightRequest="30"
                             MaximumWidthRequest="30"
                             Command="{Binding RefreshWithdrawnPageCommand}"
                             />
+                    </Grid>
                 </Grid>
-            </Grid>
-            <!-- Lista monet-->
-            <ScrollView
+                <!-- Lista monet-->
+                <ScrollView
                 HorizontalOptions="CenterAndExpand">
-                <Grid
+                    <Grid
                     HorizontalOptions="CenterAndExpand"
                     Padding="10,20,10,0"
                     ColumnSpacing="10"
                     RowSpacing="10">
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
 
-                    <!-- Kafelek 20zł-->
-                    <Grid
+                        <!-- Kafelek 20zł-->
+                        <Grid
                         Opacity="{Binding TwentyZlBanknoteGridOpacity}"
                         Grid.Column="0"
                         Grid.Row="0">
-                        <BoxView
+                            <BoxView
                         CornerRadius="10"
                         WidthRequest="160"
                         HeightRequest="160"
                         Color="{AppThemeBinding Light={StaticResource Secondary}, Dark={StaticResource Primary}}"/>
-                    <VerticalStackLayout
+                            <VerticalStackLayout
                         VerticalOptions="Center"
                         HorizontalOptions="Center"
                         Spacing="15">
-                            <Image
+                                <Image
                             Style="{StaticResource banknoteImage}"
                             MaximumHeightRequest="70"
                             Source="banknote20zl.png"/>
-                            <Label
+                                <Label
                             HorizontalOptions="Center"
                             FontSize="Medium"
                             Text="{Binding Numberof20zlBanknotes,StringFormat='{0} szt'}"/>
-                        </VerticalStackLayout>
-                    </Grid>
+                            </VerticalStackLayout>
+                        </Grid>
 
-                    <!-- Kafelek 5zł-->
-                    <Grid
+                        <!-- Kafelek 5zł-->
+                        <Grid
                         Opacity="{Binding FiveZlCoinsGridOpacity}"
                         Grid.Column="1"
                         Grid.Row="0">
-                        <BoxView
+                            <BoxView
                         Grid.Column="1"
                         Grid.Row="0"
                         CornerRadius="10"
                         WidthRequest="160"
                         HeightRequest="160"
                         Color="{AppThemeBinding Light={StaticResource Secondary}, Dark={StaticResource Primary}}"/>
-                        <VerticalStackLayout
+                            <VerticalStackLayout
                         Grid.Column="1"
                         Grid.Row="0"
                         VerticalOptions="Center"
                         HorizontalOptions="Center"
                         Spacing="15">
-                            <Image
+                                <Image
                             Style="{StaticResource banknoteImage}"
                             MaximumHeightRequest="70"
                             Source="coin5zl.png"/>
-                            <Label
+                                <Label
                             HorizontalOptions="Center"
                             FontSize="Medium"
                             Text="{Binding Numberof5zlCoins,StringFormat='{0} szt'}"/>
-                        </VerticalStackLayout>
-                    </Grid>
+                            </VerticalStackLayout>
+                        </Grid>
 
-                    <!-- Kafelek 2zł-->
-                    <Grid
+                        <!-- Kafelek 2zł-->
+                        <Grid
                         Opacity="{Binding TwoZlCoinsGridOpacity}"
                         Grid.Column="0"
                         Grid.Row="1">
-                        <BoxView
+                            <BoxView
                         CornerRadius="10"
                         WidthRequest="160"
                         HeightRequest="160"
                         Color="{AppThemeBinding Light={StaticResource Secondary}, Dark={StaticResource Primary}}"/>
-                        <VerticalStackLayout
+                            <VerticalStackLayout
                         VerticalOptions="Center"
                         HorizontalOptions="Center"
                         Spacing="15">
-                            <Image
+                                <Image
                                 Style="{StaticResource banknoteImage}"
                             MaximumHeightRequest="70"
                             Source="coin2zl.png"/>
-                            <Label
+                                <Label
                             HorizontalOptions="Center"
                             FontSize="Medium"
                             Text="{Binding Numberof2zlCoins,StringFormat='{0} szt'}"/>
-                        </VerticalStackLayout>
-                    </Grid>
+                            </VerticalStackLayout>
+                        </Grid>
 
-                    <!-- Kafelek 1zł-->
-                    <Grid
+                        <!-- Kafelek 1zł-->
+                        <Grid
                         Opacity="{Binding OneZlCoinsGridOpacity}"
                         Grid.Column="1"
                         Grid.Row="1">
-                        <BoxView
+                            <BoxView
                         CornerRadius="10"
                         WidthRequest="160"
                         HeightRequest="160"
                         Color="{AppThemeBinding Light={StaticResource Secondary}, Dark={StaticResource Primary}}"/>
-                        <VerticalStackLayout
+                            <VerticalStackLayout
                         VerticalOptions="Center"
                         HorizontalOptions="Center"
                         Spacing="15">
-                            <Image
+                                <Image
                                 Style="{StaticResource banknoteImage}"
                             MaximumHeightRequest="70"
                             Source="coin1zl.png"/>
-                            <Label
+                                <Label
                             HorizontalOptions="Center"
                             FontSize="Medium"
                             Text="{Binding Numberof1zlCoins,StringFormat='{0} szt'}"/>
-                        </VerticalStackLayout>
-                    </Grid>
+                            </VerticalStackLayout>
+                        </Grid>
 
-                    <!-- Kafelek z sumą wpłaconych-->
-                    <Grid
+                        <!-- Kafelek z sumą wpłaconych-->
+                        <Grid
                         Opacity="{Binding WithdrawnTotalGridOpacity}"
                         Grid.ColumnSpan="2"
                         Grid.Row="2">
-                        <BoxView
+                            <BoxView
                         WidthRequest="300"
                         HeightRequest="100"
                         CornerRadius="10"
                         Color="{AppThemeBinding Light={StaticResource Secondary}, Dark={StaticResource Primary}}"/>
-                        <VerticalStackLayout
+                            <VerticalStackLayout
                         VerticalOptions="Center"
                         HorizontalOptions="Center">
-                            <Label
+                                <Label
                             Text="Razem"
                             FontSize="Large"/>
-                            <Label
+                                <Label
                             Text="{Binding WithdrawnTotalCount,StringFormat='{0} szt'}"
                             FontSize="Small"/>
-                            <Label
+                                <Label
                             Text="{Binding WithdrawnTotalSum,StringFormat='{0:F2} zł'}"
                             FontSize="Small"/>
-                        </VerticalStackLayout>
-                    </Grid>
+                            </VerticalStackLayout>
+                        </Grid>
 
-                </Grid>
-            </ScrollView>
-        </VerticalStackLayout>
+                    </Grid>
+                </ScrollView>
+            </VerticalStackLayout>
+        </ScrollView>
     </RefreshView>
 </ContentPage>

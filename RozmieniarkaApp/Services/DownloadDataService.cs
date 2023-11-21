@@ -29,7 +29,7 @@ namespace RozmieniarkaApp.Services
         }
         public static async Task<string> DownloadStatus(DataQueryType dataQueryType)
         {
-            string ipAddress = Preferences.Get("MachineIPaddress", "192.168.1.61");
+            string ipAddress = Preferences.Get("MachineIPaddress", "10.0.0.7");
             int port = Preferences.Get("MachinePort", 5555);
             string message = CreateMessage(dataQueryType);
             string status = "";

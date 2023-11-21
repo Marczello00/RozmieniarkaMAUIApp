@@ -22,13 +22,14 @@ namespace RozmieniarkaApp.ViewModels
         [RelayCommand]
         public async Task SaveButtonClickedAsync()
         {
+            //TODO walidacja bo mozna robic co sie chce XD
             Preferences.Set("MachineIPaddress", MachineIPaddress);
             Preferences.Set("MachinePort", Convert.ToInt32(MachinePort));
             await Shell.Current.GoToAsync("..", true);
         }
         private void LoadMachineData()
         {
-            MachineIPaddress = Preferences.Get("MachineIPaddress", "192.168.1.61");
+            MachineIPaddress = Preferences.Get("MachineIPaddress", "10.0.0.7");
             MachinePort = Preferences.Get("MachinePort", 5555).ToString();
         }
     }
