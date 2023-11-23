@@ -8,7 +8,6 @@
     <ContentPage.BindingContext>
         <local:SettingsPageViewModel/>
     </ContentPage.BindingContext>
-    <!--//TODO LOGO pod DARK/LIGHT theme oraz aby domyslnie nie byl ustawiony adres 1.61 i port 5555 -->
     <ScrollView>
         <VerticalStackLayout
         Padding="10,20,10,0"

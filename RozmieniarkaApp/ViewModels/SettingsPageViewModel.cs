@@ -22,7 +22,6 @@ namespace RozmieniarkaApp.ViewModels
         [RelayCommand]
         public async Task SaveButtonClickedAsync()
         {
-            //TODO walidacja bo mozna robic co sie chce XD
             Preferences.Set("MachineIPaddress", MachineIPaddress);
             Preferences.Set("MachinePort", Convert.ToInt32(MachinePort));
             await Shell.Current.GoToAsync("..", true);
