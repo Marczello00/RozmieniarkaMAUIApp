@@ -29,7 +29,7 @@ namespace RozmieniarkaApp.Services
         }
         public static async Task<string> DownloadStatus(DataQueryType dataQueryType)
         {
-            string ipAddress = Preferences.Get("MachineIPaddress", "192.168.1.61");
+            string ipAddress = Preferences.Get("MachineIPaddress", "10.0.0.7");
             int port = Preferences.Get("MachinePort", 5555);
             string message = CreateMessage(dataQueryType);
             string status = "";
@@ -45,6 +45,17 @@ namespace RozmieniarkaApp.Services
                 {
                     //https://learn.microsoft.com/en-us/dotnet/api/system.net.sockets.tcpclient.connectasync?view=net-7.0
                     // TODO handle diffrent errors
+                    if(ex is ArgumentNullException)
+                        status = "Error: Nie podano adresu IP!";
+                    else if(ex is SocketException)
+                        status = "Error: Nie można nawiązać połączenia z rozmieniarką!";
+                    else if(ex is ObjectDisposedException)
+                        status = "Error: " + ex.Message;
+                    else if(ex is ArgumentOutOfRangeException)
+                        status = "Error: Podany port: "+port+" nie istnieje!";
+                    else if(ex is TaskCanceledException)
+                        status = "Error: " + ex.Message;
+                    else
                     status = "Error: " + ex.Message;
                 }
                 if (client.Connected)
