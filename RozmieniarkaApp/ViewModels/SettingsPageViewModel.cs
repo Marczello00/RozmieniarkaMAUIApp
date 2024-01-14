@@ -22,9 +22,39 @@ namespace RozmieniarkaApp.ViewModels
         [RelayCommand]
         public async Task SaveButtonClickedAsync()
         {
+            bool preventSave = false;
+            int portNumber=0;
             Preferences.Set("MachineIPaddress", MachineIPaddress);
-            Preferences.Set("MachinePort", Convert.ToInt32(MachinePort));
-            await Shell.Current.GoToAsync("..", true);
+            try
+            {
+                portNumber = Convert.ToInt32(Convert.ToDouble(MachinePort));
+                if (portNumber < 0 || portNumber > 65535)
+                    throw new ArgumentOutOfRangeException();
+            }
+            catch (Exception ex)
+            {
+                preventSave = true;
+                switch (ex)
+                {
+                    case FormatException:
+                        await Shell.Current.DisplayAlert("Błąd", "Podano niepoprawny port!", "OK");
+                        break;
+                    case OverflowException:
+                        await Shell.Current.DisplayAlert("Błąd", "Podano niepoprawny port!", "OK");
+                        break;
+                    case ArgumentOutOfRangeException:
+                        await Shell.Current.DisplayAlert("Błąd", "Taki port nie istnieje!", "OK");
+                        break;
+                    default:
+                        await Shell.Current.DisplayAlert("Błąd", "Nieznany błąd przy zapisywaniu portu!", "OK");
+                        break;
+                }
+            }
+            if (!preventSave)
+            {
+                Preferences.Set("MachinePort", portNumber);
+                await Shell.Current.GoToAsync("..", true);
+            }
         }
         private void LoadMachineData()
         {
