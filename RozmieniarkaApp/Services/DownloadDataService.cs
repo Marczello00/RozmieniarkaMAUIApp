@@ -43,20 +43,30 @@ namespace RozmieniarkaApp.Services
                 }
                 catch (Exception ex)
                 {
-                    //https://learn.microsoft.com/en-us/dotnet/api/system.net.sockets.tcpclient.connectasync?view=net-7.0
-                    // TODO handle diffrent errors
-                    if(ex is ArgumentNullException)
-                        status = "Error: Nie podano adresu IP!";
-                    else if(ex is SocketException)
-                        status = "Error: Nie można nawiązać połączenia z rozmieniarką!";
-                    else if(ex is ObjectDisposedException)
-                        status = "Error: " + ex.Message;
-                    else if(ex is ArgumentOutOfRangeException)
-                        status = "Error: Podany port: "+port+" nie istnieje!";
-                    else if(ex is TaskCanceledException)
-                        status = "Error: " + ex.Message;
-                    else
-                    status = "Error: " + ex.Message;
+                    switch (ex)
+                    {
+                        case ArgumentNullException:
+                            status = "Error: Nie podano adresu IP bądź portu!";
+                            break;
+                        case ArgumentException:
+                            status = "Error: Nie podano adresu IP bądź portu!";
+                            break;
+                        case TimeoutException:
+                            status = "Error: Przekroczono czas próby połączenia!";
+                            break;
+                        case SocketException:
+                            status = "Error: Nie można nawiązać połączenia z rozmieniarką!";
+                            break;
+                        case ObjectDisposedException:
+                            status = "Error: " + ex.Message;
+                            break;
+                        case TaskCanceledException:
+                            status = "Error: " + ex.Message;
+                            break;
+                        default:
+                            status = "Error: " + ex.Message;
+                            break;
+                    }
                 }
                 if (client.Connected)
                 {

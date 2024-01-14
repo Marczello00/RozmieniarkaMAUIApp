@@ -83,7 +83,7 @@ namespace RozmieniarkaApp.ViewModels
             //status = "001006";
             if (status[..2] == "Er")
             {
-                await Shell.Current.DisplayAlert("Błąd", string.Concat("Nie udało się połączyć z urządzeniem:\n", status.AsSpan(7)), "OK");
+                await Shell.Current.DisplayAlert("Błąd", string.Concat(status.Substring(7)), "OK");
             }
             else
             {
