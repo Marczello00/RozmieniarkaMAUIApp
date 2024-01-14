@@ -19,8 +19,8 @@
 		<ApplicationId>com.majcher.rozmieniarkaapp</ApplicationId>
 		<ApplicationIdGuid>0da2ec85-7cf1-4f30-a230-33fd54315fcb</ApplicationIdGuid>
 
-		<!-- Versions -->
-		<ApplicationDisplayVersion>1.1.1</ApplicationDisplayVersion>
+		<!-- Versions (remeber to set it in settingsPage too)-->
+		<ApplicationDisplayVersion>1.2.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>

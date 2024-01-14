@@ -85,7 +85,7 @@
             <VerticalStackLayout
             Margin="0,30,0,0">
                 <Label
-            Text="Wersja 1.1.1"
+            Text="Wersja 1.2.0"
             VerticalOptions="EndAndExpand"
             FontSize="Micro"
             TextColor="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource White}}"/>
