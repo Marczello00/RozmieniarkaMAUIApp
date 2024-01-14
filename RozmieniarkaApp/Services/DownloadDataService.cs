@@ -43,7 +43,30 @@ namespace RozmieniarkaApp.Services
                 }
                 catch (Exception ex)
                 {
-                    status = "Error: " + ex.Message;
+                    switch (ex)
+                    {
+                        case ArgumentNullException:
+                            status = "Error: Nie podano adresu IP bądź portu!";
+                            break;
+                        case ArgumentException:
+                            status = "Error: Nie podano adresu IP bądź portu!";
+                            break;
+                        case TimeoutException:
+                            status = "Error: Przekroczono czas próby połączenia!";
+                            break;
+                        case SocketException:
+                            status = "Error: Nie można nawiązać połączenia z rozmieniarką!";
+                            break;
+                        case ObjectDisposedException:
+                            status = "Error: " + ex.Message;
+                            break;
+                        case TaskCanceledException:
+                            status = "Error: " + ex.Message;
+                            break;
+                        default:
+                            status = "Error: " + ex.Message;
+                            break;
+                    }
                 }
                 if (client.Connected)
                 {
