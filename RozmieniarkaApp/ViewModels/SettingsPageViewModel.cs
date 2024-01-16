@@ -9,8 +9,11 @@ namespace RozmieniarkaApp.ViewModels
         private string machineIPaddress;
         [ObservableProperty]
         private string machinePort;
+        [ObservableProperty]
+        private string appVersion;
         public SettingsPageViewModel()
         {
+            appVersion = "Wersja " + AppInfo.VersionString;
             //Preferences.Clear();
             LoadMachineData();
         }
