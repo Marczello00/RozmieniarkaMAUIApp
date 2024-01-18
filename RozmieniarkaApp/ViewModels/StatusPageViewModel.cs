@@ -63,7 +63,8 @@ namespace RozmieniarkaApp.ViewModels
             string status = await DownloadDataService.DownloadStatus(DataQueryType.Status);
             if (status[..2] == "Er")
             {
-                await Shell.Current.DisplayAlert("Błąd", string.Concat(status.Substring(7)), "OK");
+                //await Shell.Current.DisplayAlert("Błąd", string.Concat(status.Substring(7)), "OK");
+                await Application.Current.MainPage.DisplayAlert("Błąd", string.Concat(status.Substring(7)), "OK");
             }
             else
             {
@@ -76,7 +77,9 @@ namespace RozmieniarkaApp.ViewModels
         [RelayCommand]
         public static async Task GotoSettingsPage()
         {
-            await Shell.Current.Navigation.PushAsync(new SettingsPage());
+            //await Shell.Current.Navigation.PushAsync(new SettingsPage());
+            await Application.Current.MainPage.Navigation.PushAsync(new SettingsPage(), false);
+
         }
     }
 }
