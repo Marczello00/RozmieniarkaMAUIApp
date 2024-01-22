@@ -69,8 +69,25 @@ namespace RozmieniarkaApp.ViewModels
             else
             {
                 MachineStatusModel machineStatus = new();
-                machineStatus.FillMachineStatusFromStatusQuery(status.Substring(6, 10));
-                FillInPage(machineStatus);
+                try 
+                {
+                    machineStatus.FillMachineStatusFromStatusQuery(status.Substring(6, 10));
+                    FillInPage(machineStatus);
+                }
+                catch (Exception ex)
+                {
+                    switch (ex)
+                    {
+                        case ArgumentException:
+                            //await Shell.Current.DisplayAlert("Błąd", " ", "OK");
+                            await Application.Current.MainPage.DisplayAlert("Błąd", "Niepoprawna odpowiedź statusu rozmieniarki.\nCzyżby zaciął się czytnik?", "OK");
+                            break;
+                        default:
+                            //await Shell.Current.DisplayAlert("Błąd", " ", "OK");
+                            await Application.Current.MainPage.DisplayAlert("Błąd", "Odpowiedź statusu rozmieniarki niepoprawna", "OK");
+                            break;
+                    }
+                }
             }
             IsPageRefreshing = false;
         }
