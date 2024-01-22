@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:RozmieniarkaApp.ViewModels"
              x:Class="RozmieniarkaApp.Views.SettingsPage"
              Title="Ustawienia aplikacji"
+             NavigationPage.HasNavigationBar="false" 
              >
     <ContentPage.BindingContext>
         <local:SettingsPageViewModel/>

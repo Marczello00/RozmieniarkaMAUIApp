@@ -63,20 +63,39 @@ namespace RozmieniarkaApp.ViewModels
             string status = await DownloadDataService.DownloadStatus(DataQueryType.Status);
             if (status[..2] == "Er")
             {
-                await Shell.Current.DisplayAlert("Błąd", string.Concat(status.Substring(7)), "OK");
+                //await Shell.Current.DisplayAlert("Błąd", string.Concat(status.Substring(7)), "OK");
+                await Application.Current.MainPage.DisplayAlert("Błąd", string.Concat(status.Substring(7)), "OK");
             }
             else
             {
                 MachineStatusModel machineStatus = new();
-                machineStatus.FillMachineStatusFromStatusQuery(status.Substring(6, 10));
-                FillInPage(machineStatus);
+                try 
+                {
+                    machineStatus.FillMachineStatusFromStatusQuery(status.Substring(6, 10));
+                    FillInPage(machineStatus);
+                }
+                catch (Exception ex)
+                {
+                    switch (ex)
+                    {
+                        case ArgumentException:
+                            //await Shell.Current.DisplayAlert("Błąd", " ", "OK");
+                            await Application.Current.MainPage.DisplayAlert("Błąd", "Niepoprawna odpowiedź statusu rozmieniarki.\nCzyżby zaciął się czytnik?", "OK");
+                            break;
+                        default:
+                            //await Shell.Current.DisplayAlert("Błąd", " ", "OK");
+                            await Application.Current.MainPage.DisplayAlert("Błąd", "Niepoprawna odpowiedź statusu rozmieniarki!", "OK");
+                            break;
+                    }
+                }
             }
             IsPageRefreshing = false;
         }
         [RelayCommand]
         public static async Task GotoSettingsPage()
         {
-            await Shell.Current.Navigation.PushAsync(new SettingsPage());
+            //await Shell.Current.Navigation.PushAsync(new SettingsPage());
+            await Application.Current.MainPage.Navigation.PushAsync(new SettingsPage(), animated: true);
         }
     }
 }

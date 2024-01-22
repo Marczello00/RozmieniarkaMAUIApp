@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:local="clr-namespace:RozmieniarkaApp.Views"
+            xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
+            android:TabbedPage.ToolbarPlacement="Bottom"
+            android:TabbedPage.IsSmoothScrollEnabled="true"
+            NavigationPage.HasNavigationBar="false" 
+            BarBackgroundColor="{AppThemeBinding Light={StaticResource Primary3}, Dark={StaticResource Tertiary3}}"
+            UnselectedTabColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray500}}"
+            SelectedTabColor="{AppThemeBinding Light={StaticResource Tertiary3}, Dark={StaticResource Gray100}}"
+            x:Class="RozmieniarkaApp.Views.MainPage">
+    
+    <local:StatusPage Title="Status" IconImageSource="status.png"/>
+    <local:InsertedPage Title="Wpłacono" IconImageSource="banknote.png"/>
+    <local:WithdrawnPage Title="Wypłacono" IconImageSource="coins.png"/>
+</TabbedPage>

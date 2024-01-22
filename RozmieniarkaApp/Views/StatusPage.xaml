@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:RozmieniarkaApp.ViewModels"
              xmlns:local2="clr-namespace:RozmieniarkaApp.Converters"
              x:Class="RozmieniarkaApp.Views.StatusPage"
-             Shell.NavBarIsVisible="false">
+             NavigationPage.HasNavigationBar="false" >
     <ContentPage.BindingContext>
         <local:StatusPageViewModel/>
     </ContentPage.BindingContext>
