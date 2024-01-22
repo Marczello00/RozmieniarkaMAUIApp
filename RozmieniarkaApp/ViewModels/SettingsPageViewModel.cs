@@ -21,7 +21,7 @@ namespace RozmieniarkaApp.ViewModels
         public static async Task CancelButtonClickedAsync()
         {
             //await Shell.Current.GoToAsync("..",true);
-            await Application.Current.MainPage.Navigation.PopAsync();
+            await Application.Current.MainPage.Navigation.PopAsync(animated: true);
         }
         [RelayCommand]
         public async Task SaveButtonClickedAsync()
@@ -62,7 +62,7 @@ namespace RozmieniarkaApp.ViewModels
             {
                 Preferences.Set("MachinePort", portNumber);
                 //await Shell.Current.GoToAsync("..", true);
-                await Application.Current.MainPage.Navigation.PopAsync();
+                await Application.Current.MainPage.Navigation.PopAsync(animated: true);
             }
         }
         private void LoadMachineData()

@@ -84,7 +84,7 @@ namespace RozmieniarkaApp.ViewModels
                             break;
                         default:
                             //await Shell.Current.DisplayAlert("Błąd", " ", "OK");
-                            await Application.Current.MainPage.DisplayAlert("Błąd", "Odpowiedź statusu rozmieniarki niepoprawna", "OK");
+                            await Application.Current.MainPage.DisplayAlert("Błąd", "Niepoprawna odpowiedź statusu rozmieniarki!", "OK");
                             break;
                     }
                 }
@@ -95,8 +95,7 @@ namespace RozmieniarkaApp.ViewModels
         public static async Task GotoSettingsPage()
         {
             //await Shell.Current.Navigation.PushAsync(new SettingsPage());
-            await Application.Current.MainPage.Navigation.PushAsync(new SettingsPage(), false);
-
+            await Application.Current.MainPage.Navigation.PushAsync(new SettingsPage(), animated: true);
         }
     }
 }

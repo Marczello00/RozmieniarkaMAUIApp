@@ -59,6 +59,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Platforms\Android\Resources\anim\nav_default_enter_anim.xml" />
+	  <None Remove="Platforms\Android\Resources\anim\nav_default_exit_anim.xml" />
+	  <None Remove="Platforms\Android\Resources\anim\nav_default_pop_enter_anim.xml" />
+	  <None Remove="Platforms\Android\Resources\anim\nav_default_pop_exit_anim.xml" />
 	  <None Remove="Resources\Images\banknote100zl.png" />
 	  <None Remove="Resources\Images\banknote10zl.png" />
 	  <None Remove="Resources\Images\banknote20zl.png" />
