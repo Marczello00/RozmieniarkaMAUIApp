@@ -135,7 +135,7 @@ namespace RozmieniarkaApp.ViewModels
         }
         private string CreateLastUpdatedLine()
         {
-            //Rozdziel też na mniej niz 5 i wiecej niz 1
+            //Rozdziel też na mniej niz 5 i wiecej niz 1 oraz odswiezaj przy na przyklad onForeground event
             int timeNumber;
             string timeUnit;
             TimeSpan timeSpan = DateTime.Now - RetrieveSavedTime();
