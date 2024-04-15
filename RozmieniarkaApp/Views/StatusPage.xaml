@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:RozmieniarkaApp.ViewModels"
+             xmlns:viewModel="clr-namespace:RozmieniarkaApp.ViewModels"
              xmlns:local2="clr-namespace:RozmieniarkaApp.Converters"
              x:Class="RozmieniarkaApp.Views.StatusPage"
              NavigationPage.HasNavigationBar="false" >
     <ContentPage.BindingContext>
-        <local:StatusPageViewModel/>
+        <viewModel:StatusPageViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Resources>
         <local2:AvailableBanknotesConverter x:Key="AvailableBanknotesConverter"/>

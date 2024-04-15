@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:RozmieniarkaApp.ViewModels"
+             xmlns:local2="clr-namespace:RozmieniarkaApp.Converters"
+             x:Class="RozmieniarkaApp.Views.TaxWizardPage"
+             NavigationPage.HasNavigationBar="false">
+    <ContentPage.BindingContext>
+        <viewModel:TaxWizardPageViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <local2:TaxingStatusConverter x:Key="TaxingStatusConverter" />
+    </ContentPage.Resources>
+    <RefreshView
+        HorizontalOptions="FillAndExpand"
+        IsRefreshing="{Binding IsPageRefreshing}"
+        Command="{Binding RefreshTaxingStatusCommand}">
+        <ScrollView>
+            <VerticalStackLayout>
+                <!-- Górna belka-->
+                <Grid
+                MinimumHeightRequest="60"
+                BackgroundColor="{StaticResource Tertiary}">
+                    <Label
+                    VerticalOptions="Center"
+                    Padding="10,0,0,0"
+                    FontSize="Body"
+                    TextColor="white"
+                    Text="Podatkowanie"/>
+                    <Grid
+                    Padding="0,0,20,0"
+                    HorizontalOptions="EndAndExpand"
+                    VerticalOptions="Center">
+                        <ImageButton
+                            Source="refresh.png"
+                            MaximumHeightRequest="30"
+                            MaximumWidthRequest="30"
+                            Command="{Binding RefreshTaxingStatusCommand}"
+                            />
+                    </Grid>
+                </Grid>
+                <!-- Status podatkowania-->
+
+                <StackLayout Padding="20" Spacing="20">
+                    <!-- Pasek statusu -->
+                    <Frame BackgroundColor="#2196F3" CornerRadius="8" Padding="10">
+                        <Label Text="{Binding TaxingStatus, Converter={StaticResource TaxingStatusConverter}, StringFormat='Status: fiskalizacja {0}'}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White"/>
+                    </Frame>
+                    <Label Text="{Binding StatusLabelText}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White"/>
+                    <!-- Przyciski Włącz i Wyłącz -->
+                    <Label Text="{Binding TaxingStatus}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White"/>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <Button Style="{StaticResource TaxingPageButton}" BackgroundColor="Green" Text="Włącz" Command="{Binding TurnOnButtonClickedCommand}"/>
+                        <Button Style="{StaticResource TaxingPageButton}" BackgroundColor="Red" Text="Wyłącz" Command="{Binding TurnOffButtonClickedCommand}"/>
+                    </StackLayout>
+
+                </StackLayout>
+                <ListView
+                    ItemsSource="{Binding TaxingStatusList}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding}" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <ListView
+                    ItemsSource="{Binding TaxingStatusList2}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding}" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <CollectionView
+                    ItemsSource="{Binding TaxingStatusList}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Label Text="{Binding}" />
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+        </ScrollView>
+    </RefreshView>
+</ContentPage>

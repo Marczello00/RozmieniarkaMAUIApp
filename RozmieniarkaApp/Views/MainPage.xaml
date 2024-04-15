@@ -14,4 +14,5 @@
     <local:StatusPage Title="Status" IconImageSource="status.png"/>
     <local:InsertedPage Title="Wpłacono" IconImageSource="banknote.png"/>
     <local:WithdrawnPage Title="Wypłacono" IconImageSource="coins.png"/>
+    <local:TaxWizardPage Title="Podatek" IconImageSource="coins.png"/>
 </TabbedPage>
