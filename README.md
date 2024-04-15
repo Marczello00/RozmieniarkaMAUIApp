@@ -25,11 +25,11 @@ To install the application, follow these steps:
 
 ## Screenshots of user interface
 
-![Status Page](img/img1.png)
-![Status Page in dark mode](img/img2.png)
-![Withdrawn Page](img/img3.png)
-![Inserted Page](img/img4.png)
-![Settings Page](img/img5.png)
+<img src="img/img1.png" alt="Status Page" width="300"/>
+<img src="img/img2.png" alt="Status Page in dark mode" width="300"/>
+<img src="img/img3.png" alt="Withdrawn Page" width="300"/>
+<img src="img/img4.png" alt="Inserted Page" width="300"/>
+<img src="img/img5.png" alt="Settings Page" width="300"/>
 
 ## Supported change machines
 
