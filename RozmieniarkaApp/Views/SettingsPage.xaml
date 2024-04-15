@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:RozmieniarkaApp.ViewModels"
              x:Class="RozmieniarkaApp.Views.SettingsPage"
              Title="Ustawienia aplikacji"
+             NavigationPage.HasNavigationBar="false" 
              >
     <ContentPage.BindingContext>
         <local:SettingsPageViewModel/>
@@ -85,7 +86,7 @@
             <VerticalStackLayout
             Margin="0,30,0,0">
                 <Label
-            Text="Wersja 1.1.1"
+            Text="{Binding AppVersion}"
             VerticalOptions="EndAndExpand"
             FontSize="Micro"
             TextColor="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource White}}"/>

@@ -9,15 +9,19 @@ namespace RozmieniarkaApp.ViewModels
         private string machineIPaddress;
         [ObservableProperty]
         private string machinePort;
+        [ObservableProperty]
+        private string appVersion;
         public SettingsPageViewModel()
         {
+            appVersion = "Wersja " + AppInfo.VersionString;
             //Preferences.Clear();
             LoadMachineData();
         }
         [RelayCommand]
         public static async Task CancelButtonClickedAsync()
         {
-            await Shell.Current.GoToAsync("..",true);
+            //await Shell.Current.GoToAsync("..",true);
+            await Application.Current.MainPage.Navigation.PopAsync(animated: true);
         }
         [RelayCommand]
         public async Task SaveButtonClickedAsync()
@@ -37,23 +41,28 @@ namespace RozmieniarkaApp.ViewModels
                 switch (ex)
                 {
                     case FormatException:
-                        await Shell.Current.DisplayAlert("Błąd", "Podano niepoprawny port!", "OK");
+                        //await Shell.Current.DisplayAlert("Błąd", "Podano niepoprawny port!", "OK");
+                        await Application.Current.MainPage.DisplayAlert("Błąd", "Podano niepoprawny port!", "OK");
                         break;
                     case OverflowException:
-                        await Shell.Current.DisplayAlert("Błąd", "Podano niepoprawny port!", "OK");
+                        //await Shell.Current.DisplayAlert("Błąd", "Podano niepoprawny port!", "OK");
+                        await Application.Current.MainPage.DisplayAlert("Błąd", "Podano niepoprawny port!", "OK");
                         break;
                     case ArgumentOutOfRangeException:
-                        await Shell.Current.DisplayAlert("Błąd", "Taki port nie istnieje!", "OK");
+                        //await Shell.Current.DisplayAlert("Błąd", "Taki port nie istnieje!", "OK");
+                        await Application.Current.MainPage.DisplayAlert("Błąd", "Taki port nie istnieje!", "OK");
                         break;
                     default:
-                        await Shell.Current.DisplayAlert("Błąd", "Nieznany błąd przy zapisywaniu portu!", "OK");
+                        //await Shell.Current.DisplayAlert("Błąd", "Nieznany błąd przy zapisywaniu portu!", "OK");
+                        await Application.Current.MainPage.DisplayAlert("Błąd", "Nieznany błąd przy zapisywaniu portu!", "OK");
                         break;
                 }
             }
             if (!preventSave)
             {
                 Preferences.Set("MachinePort", portNumber);
-                await Shell.Current.GoToAsync("..", true);
+                //await Shell.Current.GoToAsync("..", true);
+                await Application.Current.MainPage.Navigation.PopAsync(animated: true);
             }
         }
         private void LoadMachineData()
