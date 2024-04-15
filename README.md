@@ -23,6 +23,14 @@ To install the application, follow these steps:
 2. On first run in settings page specify IP address and port of your change machine network card
 3. Save settings and refresh status page
 
+## Screenshots of user interface
+
+![Status Page](img/img1.png)
+![Status Page in dark mode](img/img2.png)
+![Withdrawn Page](img/img3.png)
+![Inserted Page](img/img4.png)
+![Settings Page](img/img5.png)
+
 ## Supported change machines
 
 [ROZMIENIARKA PIENIĘDZY by Globe Solutions Sp. z o.o](https://www.globesolutions.pl/produkty/rozmieniarka-pieniedzy)
