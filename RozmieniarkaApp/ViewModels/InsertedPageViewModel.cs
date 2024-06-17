@@ -45,6 +45,11 @@ namespace RozmieniarkaApp.ViewModels
             InsertedTotalCount = 0;
             IsPageRefreshing = false;
             SetAllOpacityLow();
+            try
+            {
+                Task.Run(() => { RefreshInsertedPage(); });
+            }
+            catch (Exception) { }
         }
         private void InsertCurrencyInsertedItem(CurrencyModel currencyItem)
         {

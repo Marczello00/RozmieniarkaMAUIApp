@@ -71,6 +71,7 @@
 	  <None Remove="Resources\Images\Coin2zl.png" />
 	  <None Remove="Resources\Images\coin5zl.png" />
 	  <None Remove="Resources\Images\dotnet_bot.svg" />
+	  <None Remove="Resources\Images\Icons\for_sure_not_fraud.png" />
 	  <None Remove="Resources\Images\Icons\refresh.png" />
 	  <None Remove="Resources\Images\Icons\setting.png" />
 	  <None Remove="Resources\Images\logo_dark_theme.svg" />
@@ -80,6 +81,7 @@
 	<ItemGroup>
 	  <MauiImage Include="Resources\Images\Icons\banknote.png" />
 	  <MauiImage Include="Resources\Images\Icons\coins.png" />
+	  <MauiImage Include="Resources\Images\Icons\for_sure_not_fraud.png" />
 	  <MauiImage Include="Resources\Images\Icons\refresh.png" />
 	  <MauiImage Include="Resources\Images\Icons\setting.png" />
 	  <MauiImage Include="Resources\Images\Icons\status.png" />

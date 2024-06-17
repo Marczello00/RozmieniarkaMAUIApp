@@ -8,6 +8,8 @@ namespace RozmieniarkaApp.ViewModels
         [ObservableProperty]
         private string machineIPaddress;
         [ObservableProperty]
+        private string tWMachineIPaddress;
+        [ObservableProperty]
         private string machinePort;
         [ObservableProperty]
         private string appVersion;
@@ -29,6 +31,7 @@ namespace RozmieniarkaApp.ViewModels
             bool preventSave = false;
             int portNumber=0;
             Preferences.Set("MachineIPaddress", MachineIPaddress);
+            Preferences.Set("TWMachineIPaddress", TWMachineIPaddress);
             try
             {
                 portNumber = Convert.ToInt32(Convert.ToDouble(MachinePort));
@@ -69,6 +72,7 @@ namespace RozmieniarkaApp.ViewModels
         {
             MachineIPaddress = Preferences.Get("MachineIPaddress", "10.0.0.7");
             MachinePort = Preferences.Get("MachinePort", 5555).ToString();
+            TWMachineIPaddress = Preferences.Get("TWMachineIPaddress", "192.168.1.123");
         }
     }
 }

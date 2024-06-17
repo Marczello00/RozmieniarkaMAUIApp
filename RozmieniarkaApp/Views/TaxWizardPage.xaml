@@ -5,81 +5,125 @@
              xmlns:local2="clr-namespace:RozmieniarkaApp.Converters"
              x:Class="RozmieniarkaApp.Views.TaxWizardPage"
              NavigationPage.HasNavigationBar="false">
-    <ContentPage.BindingContext>
-        <viewModel:TaxWizardPageViewModel/>
-    </ContentPage.BindingContext>
-    <ContentPage.Resources>
-        <local2:TaxingStatusConverter x:Key="TaxingStatusConverter" />
-    </ContentPage.Resources>
-    <RefreshView
+	<ContentPage.BindingContext>
+		<viewModel:TaxWizardPageViewModel/>
+	</ContentPage.BindingContext>
+	<ContentPage.Resources>
+		<local2:TaxingStatusConverter x:Key="TaxingStatusConverter" />
+	</ContentPage.Resources>
+	<RefreshView
         HorizontalOptions="FillAndExpand"
         IsRefreshing="{Binding IsPageRefreshing}"
         Command="{Binding RefreshTaxingStatusCommand}">
-        <ScrollView>
-            <VerticalStackLayout>
-                <!-- Górna belka-->
-                <Grid
+		<ScrollView>
+			<VerticalStackLayout>
+				<!-- Górna belka-->
+				<Grid
                 MinimumHeightRequest="60"
                 BackgroundColor="{StaticResource Tertiary}">
-                    <Label
+					<Label
                     VerticalOptions="Center"
                     Padding="10,0,0,0"
                     FontSize="Body"
                     TextColor="white"
                     Text="Podatkowanie"/>
-                    <Grid
+					<Grid
                     Padding="0,0,20,0"
                     HorizontalOptions="EndAndExpand"
                     VerticalOptions="Center">
-                        <ImageButton
+						<ImageButton
                             Source="refresh.png"
                             MaximumHeightRequest="30"
                             MaximumWidthRequest="30"
                             Command="{Binding RefreshTaxingStatusCommand}"
                             />
-                    </Grid>
-                </Grid>
-                <!-- Status podatkowania-->
+					</Grid>
+				</Grid>
+				<!-- Właściwa strona -->
+				<Grid
+                    HorizontalOptions="FillAndExpand">
+					<VerticalStackLayout
+                        Padding="10"
+                        Spacing="10">
+						<!-- Stan opodatkowania-->
+						<Grid
+                            Style="{StaticResource StatusGridItem1a}">
+							<Frame 
+                                Style="{StaticResource StatusFrameItem1}">
+								<Grid
+                                    Style="{StaticResource StatusGridItem1b}">
+									<Label
+                                        Style="{StaticResource StatusGridItemLabel}"
+                                        Text="Status fiskalizacji"/>
+									<Grid
+                                        Margin="0,0,20,0"
+                                        HorizontalOptions="End">
+										<Rectangle
+                                            Style="{StaticResource StatusGridItemRectangle}"
+                                            Fill="{Binding IsTaxingEnabled}"/>
+									</Grid>
+								</Grid>
+							</Frame>
+						</Grid>
+						<!-- Stan myjni-->
+						<Grid
+                            Style="{StaticResource StatusGridItem1a}">
+							<Frame 
+                                Style="{StaticResource StatusFrameItem1}">
+								<Grid
+                                    Style="{StaticResource StatusGridItem1b}">
+									<Label
+                                        Style="{StaticResource StatusGridItemLabel}"
+                                        Text="Status myjni"/>
+									<Grid
+                                        Margin="0,0,20,0"
+                                        HorizontalOptions="End">
+										<Rectangle
+                                            Style="{StaticResource StatusGridItemRectangle}"
+                                            Fill="{Binding IsCarWashWorking}"/>
+									</Grid>
+								</Grid>
+							</Frame>
+						</Grid>
+					</VerticalStackLayout>
+				</Grid>
+				<StackLayout Padding="20" Spacing="20">
+					<!-- Przyciski Włącz i Wyłącz -->
+					<StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+						<Button Style="{StaticResource TaxingPageButton}" BackgroundColor="Green" Text="Włącz podatek" Command="{Binding TurnOnButtonClickedCommand}"/>
+						<Button Style="{StaticResource TaxingPageButton}" BackgroundColor="Red" Text="Wyłącz podatek" Command="{Binding TurnOffButtonClickedCommand}"/>
+					</StackLayout>
+					<!-- Przyciski doładowania-->
+					<StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+						<Button Style="{StaticResource TaxingPageButtonTopUp}" Text="Doładuj 2 zł" Command="{Binding TopUpCarWashCreditCommand}" CommandParameter="2"/>
+						<Button Style="{StaticResource TaxingPageButtonTopUp}" Text="Doładuj 5 zł" Command="{Binding TopUpCarWashCreditCommand}" CommandParameter="5"/>
+					</StackLayout>
+					<StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+						<Button Style="{StaticResource TaxingPageButtonTopUp}" Text="Doładuj 10 zł" Command="{Binding TopUpCarWashCreditCommand}" CommandParameter="10"/>
+						<Button Style="{StaticResource TaxingPageButtonTopUp}" Text="Doładuj 15 zł" Command="{Binding TopUpCarWashCreditCommand}" CommandParameter="15"/>
+					</StackLayout>
+				</StackLayout>
+				<!-- Linijka przerwy-->
+				<Grid
+BackgroundColor="{AppThemeBinding Light={StaticResource Primary1}, Dark={StaticResource Primary}}"
+Padding="1"
+Margin="-10,20,-10,0"/>
 
-                <StackLayout Padding="20" Spacing="20">
-                    <!-- Pasek statusu -->
-                    <Frame BackgroundColor="#2196F3" CornerRadius="8" Padding="10">
-                        <Label Text="{Binding TaxingStatus, Converter={StaticResource TaxingStatusConverter}, StringFormat='Status: fiskalizacja {0}'}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White"/>
-                    </Frame>
-                    <Label Text="{Binding StatusLabelText}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White"/>
-                    <!-- Przyciski Włącz i Wyłącz -->
-                    <Label Text="{Binding TaxingStatus}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White"/>
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                        <Button Style="{StaticResource TaxingPageButton}" BackgroundColor="Green" Text="Włącz" Command="{Binding TurnOnButtonClickedCommand}"/>
-                        <Button Style="{StaticResource TaxingPageButton}" BackgroundColor="Red" Text="Wyłącz" Command="{Binding TurnOffButtonClickedCommand}"/>
-                    </StackLayout>
-
-                </StackLayout>
-                <ListView
-                    ItemsSource="{Binding TaxingStatusList}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <TextCell Text="{Binding}" />
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-                <ListView
-                    ItemsSource="{Binding TaxingStatusList2}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <TextCell Text="{Binding}" />
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-                <CollectionView
-                    ItemsSource="{Binding TaxingStatusList}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Label Text="{Binding}" />
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </VerticalStackLayout>
-        </ScrollView>
-    </RefreshView>
+				<!-- Disclaimer-->
+				<VerticalStackLayout
+					Margin="0,30,0,0">
+					<Label
+						VerticalOptions="EndAndExpand"
+						TextColor="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource White}}"
+						Text="Kolor &lt;span style=&quot;color:#009419&quot;&gt;&lt;strong&gt;ZIELONY&lt;/strong&gt;&lt;/span&gt; - fiskalizacja włączona"
+						TextType="Html"/>
+					<Label
+						VerticalOptions="EndAndExpand"
+						TextColor="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource White}}"
+						Text="Kolor &lt;span style=&quot;color:red&quot;&gt;&lt;strong&gt;CZERWONY&lt;/strong&gt;&lt;/span&gt; - fiskalizacja wyłączona"
+						TextType="Html"/>
+				</VerticalStackLayout>
+			</VerticalStackLayout>
+		</ScrollView>
+	</RefreshView>
 </ContentPage>

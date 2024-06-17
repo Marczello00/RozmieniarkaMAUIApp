@@ -54,7 +54,26 @@
                 </Grid>
             </Grid>
 
-            <!-- Przyciski-->
+			<!-- TaxWizard: pole ustawienia adresu IP-->
+			<Grid>
+				<Label
+                Text="TaxWizard adres IP"
+                VerticalOptions="Center"/>
+				<Grid
+                HorizontalOptions="EndAndExpand">
+					<Entry
+                    Text="{Binding TWMachineIPaddress}"
+                       MinimumWidthRequest="120"
+                       HorizontalTextAlignment="End"
+                       Placeholder="192.168.1.123"
+                       PlaceholderColor="{StaticResource Gray400}"
+                       MaxLength="15"
+                       ClearButtonVisibility="WhileEditing"
+                   />
+				</Grid>
+			</Grid>
+
+			<!-- Przyciski-->
             <Grid>
                 <Button
                 Command="{Binding SaveButtonClickedCommand}"

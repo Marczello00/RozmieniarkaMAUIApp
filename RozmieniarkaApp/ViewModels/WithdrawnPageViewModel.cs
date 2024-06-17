@@ -44,6 +44,11 @@ namespace RozmieniarkaApp.ViewModels
             WithdrawnTotalCount = 0;
             SetAllOpacityLow();
             IsPageRefreshing = false;
+            try
+            {
+                Task.Run(() => { RefreshWithdrawnPage(); });
+            }
+            catch (Exception) { }
         }
         public void InsertCurrencyWithdrawnItem(CurrencyModel currencyItem)
         {

@@ -45,6 +45,11 @@ namespace RozmieniarkaApp.ViewModels
                 //await Application.Current.MainPage.DisplayAlert("Błąd", "Nie można pobrać danych z pamięci urządzenia!", "OK");
                 ClearPageData();
             }
+            try
+            {
+                Task.Run(() => { RefreshMachineStatus(); });
+            }
+            catch (Exception) { }
         }
 
         private MachineStatusModel RetrieveFromStorageStatusData()
