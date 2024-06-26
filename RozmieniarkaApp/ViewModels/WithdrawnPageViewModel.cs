@@ -8,7 +8,7 @@ using RozmieniarkaApp.Services;
 
 namespace RozmieniarkaApp.ViewModels
 {
-    partial class WithdrawnPageViewModel: ObservableObject
+    partial class WithdrawnPageViewModel : ObservableObject
     {
         [ObservableProperty]
         private int numberof20zlBanknotes;
@@ -44,11 +44,6 @@ namespace RozmieniarkaApp.ViewModels
             WithdrawnTotalCount = 0;
             SetAllOpacityLow();
             IsPageRefreshing = false;
-            try
-            {
-                Task.Run(() => { RefreshWithdrawnPage(); });
-            }
-            catch (Exception) { }
         }
         public void InsertCurrencyWithdrawnItem(CurrencyModel currencyItem)
         {
@@ -71,9 +66,9 @@ namespace RozmieniarkaApp.ViewModels
                     OneZlCoinsGridOpacity = 1;
                     break;
             }
-            
+
         }
-        public  void CalculateWithdrawnTotalSum()
+        public void CalculateWithdrawnTotalSum()
         {
             WithdrawnTotalSum = Numberof20zlBanknotes * 20 + Numberof5zlCoins * 5 + Numberof2zlCoins * 2 + Numberof1zlCoins;
             WithdrawnTotalCount = Numberof20zlBanknotes + Numberof5zlCoins + Numberof2zlCoins + Numberof1zlCoins;

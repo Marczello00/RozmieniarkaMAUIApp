@@ -35,21 +35,23 @@ namespace RozmieniarkaApp.ViewModels
         {
             try
             {
-                MachineStatusModel machineStatus = new();
-                machineStatus = RetrieveFromStorageStatusData();
-                FillInPage(machineStatus);
+                Task.Run(() => { RefreshMachineStatus(); });
             }
             catch (Exception)
             {
-                //await Shell.Current.DisplayAlert("Błąd", "Nie można pobrać danych z pamięci urządzenia!", "OK");
-                //await Application.Current.MainPage.DisplayAlert("Błąd", "Nie można pobrać danych z pamięci urządzenia!", "OK");
-                ClearPageData();
+                try
+                {
+                    MachineStatusModel machineStatus = new();
+                    machineStatus = RetrieveFromStorageStatusData();
+                    FillInPage(machineStatus);
+                }
+                catch (Exception)
+                {
+                    //await Shell.Current.DisplayAlert("Błąd", "Nie można pobrać danych z pamięci urządzenia!", "OK");
+                    //await Application.Current.MainPage.DisplayAlert("Błąd", "Nie można pobrać danych z pamięci urządzenia!", "OK");
+                    ClearPageData();
+                }
             }
-            try
-            {
-                Task.Run(() => { RefreshMachineStatus(); });
-            }
-            catch (Exception) { }
         }
 
         private MachineStatusModel RetrieveFromStorageStatusData()
@@ -98,7 +100,7 @@ namespace RozmieniarkaApp.ViewModels
             else
             {
                 MachineStatusModel machineStatus = new();
-                try 
+                try
                 {
                     machineStatus.FillMachineStatusFromStatusQuery(status.Substring(6, 10));
                     await SecureStorage.Default.SetAsync("StatusData", status);
@@ -144,22 +146,22 @@ namespace RozmieniarkaApp.ViewModels
             int timeNumber;
             string timeUnit;
             TimeSpan timeSpan = DateTime.Now - RetrieveSavedTime();
-            if(timeSpan.Days > 0)
+            if (timeSpan.Days > 0)
             {
                 timeNumber = timeSpan.Days;
                 timeUnit = timeNumber > 1 ? " dni" : "dzień";
             }
-            else if(timeSpan.Hours > 0)
+            else if (timeSpan.Hours > 0)
             {
                 timeNumber = timeSpan.Hours;
                 timeUnit = timeNumber > 1 ? " godz" : "godzinę";
             }
-            else if(timeSpan.Minutes > 0)
+            else if (timeSpan.Minutes > 0)
             {
                 timeNumber = timeSpan.Minutes;
                 timeUnit = timeNumber > 1 ? " min" : "minutę";
             }
-            else if(timeSpan.Seconds > 0)
+            else if (timeSpan.Seconds > 0)
             {
                 timeNumber = timeSpan.Seconds;
                 timeUnit = timeNumber > 1 ? " sek" : "sekundę";
@@ -168,7 +170,7 @@ namespace RozmieniarkaApp.ViewModels
             {
                 return "przed chwilą";
             }
-            return (timeNumber > 1 ? timeNumber.ToString() + timeUnit : timeUnit)+ " temu";
+            return (timeNumber > 1 ? timeNumber.ToString() + timeUnit : timeUnit) + " temu";
         }
         private void InsertLastUpdatedLine()
         {

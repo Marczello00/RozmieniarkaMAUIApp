@@ -14,7 +14,7 @@
 	<RefreshView
         HorizontalOptions="FillAndExpand"
         IsRefreshing="{Binding IsPageRefreshing}"
-        Command="{Binding RefreshTaxingStatusCommand}">
+        Command="{Binding RefreshPageCommand}">
 		<ScrollView>
 			<VerticalStackLayout>
 				<!-- Górna belka-->
@@ -35,7 +35,7 @@
                             Source="refresh.png"
                             MaximumHeightRequest="30"
                             MaximumWidthRequest="30"
-                            Command="{Binding RefreshTaxingStatusCommand}"
+                            Command="{Binding RefreshPageCommand}"
                             />
 					</Grid>
 				</Grid>

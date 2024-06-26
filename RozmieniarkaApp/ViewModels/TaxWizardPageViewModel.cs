@@ -4,6 +4,7 @@ using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Maui.Alerts;
 using RozmieniarkaApp.Services;
 using System.Collections.ObjectModel;
+using RozmieniarkaApp.Models;
 
 namespace RozmieniarkaApp.ViewModels
 {
@@ -15,46 +16,29 @@ namespace RozmieniarkaApp.ViewModels
         private Color isTaxingEnabled;
         [ObservableProperty]
         private Color isCarWashWorking;
-        private int taxingStatus;
-        private int CarWashStatus;
         public TaxWizardPageViewModel()
         {
-            taxingStatus = -1;
-            CarWashStatus = -1;
-            UpdateStatusLabelText();
-            Task.Run(() => { RefreshTaxingStatus(); });
+            IsTaxingEnabled = Colors.White;
+            IsCarWashWorking = Colors.White;
+            Task.Run(() => { RefreshPage(); });
 
         }
-        private void UpdateStatusLabelText()
+        private void InsertStatuses(TWStatusModel status)
         {
-            List<int> statusList = new List<int>(2);
-            statusList.Add(taxingStatus);
-            statusList.Add(CarWashStatus);
-            List<Color> colorList = new List<Color>(2);
-            colorList.Add(IsTaxingEnabled);
-            colorList.Add(IsCarWashWorking);
-            for (int i = 0; i < statusList.Count(); i++)
-                switch (statusList[i])
-                {
-                    case 0:
-                        colorList[i] = Colors.Red;
-                        break;
-                    case 1:
-                        colorList[i] = Colors.Green;
-                        break;
-                    default:
-                        colorList[i] = Colors.White;
-                        break;
-                }
-            IsTaxingEnabled = colorList[0];
-            IsCarWashWorking = colorList[1];
+            IsTaxingEnabled = status.IsTaxingEnabled == 1 ? Colors.Green :
+                status.IsTaxingEnabled == 0 ? Colors.Red :
+                Colors.White;
+            IsCarWashWorking = status.IsCarWashWorking == 1 ? Colors.Green :
+                status.IsCarWashWorking == 0 ? Colors.Red :
+                Colors.White;
         }
         [RelayCommand]
-        public async Task RefreshTaxingStatus()
+        public async Task RefreshPage()
         {
+            TWStatusModel tWStatusModel = new();
             try
             {
-                taxingStatus = await TaxWizardConnectionService.GetTaxingStatus();
+                tWStatusModel = await TaxWizardConnectionService.GetStatuses();
             }
             catch (Exception e)
             {
@@ -62,7 +46,7 @@ namespace RozmieniarkaApp.ViewModels
             }
             finally
             {
-                UpdateStatusLabelText();
+                InsertStatuses(tWStatusModel);
                 IsPageRefreshing = false;
             }
         }
@@ -70,28 +54,37 @@ namespace RozmieniarkaApp.ViewModels
         {
             try
             {
-                taxingStatus = await TaxWizardConnectionService.SetTaxingStatus(status);
-                UpdateStatusLabelText();
+                await TaxWizardConnectionService.SetTaxingStatus(status);
             }
             catch
             {
                 await Application.Current.MainPage.DisplayAlert("Błąd!", "Nie udało sie ustawić fiskalizacji!", "Ok");
             }
+            finally
+            {
+                RefreshPage();
+            }
+
         }
         [RelayCommand]
         public async Task TurnOnButtonClicked()
         {
+            bool answer = await Application.Current.MainPage.DisplayAlert("Potwierdzenie", "Czy na pewno chcesz włączyć?", "Doładuj", "Anuluj");
+            if (!answer)
+                return;
             await SetTaxingStatus(true);
         }
         [RelayCommand]
         public async Task TurnOffButtonClicked()
         {
+            bool answer = await Application.Current.MainPage.DisplayAlert("Potwierdzenie", "Czy na pewno chcesz wyłączyć?", "Doładuj", "Anuluj");
+            if (!answer)
+                return;
             await SetTaxingStatus(false);
         }
         [RelayCommand]
         public async Task TopUpCarWashCredit(string amountStr)
         {
-
             bool answer = await Application.Current.MainPage.DisplayAlert("Potwierdzenie", "Czy na pewno chcesz doładować?", "Doładuj", "Anuluj");
             if (!answer)
                 return;
